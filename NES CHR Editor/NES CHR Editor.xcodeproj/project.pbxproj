@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB7534011DCE8D510048DAD4 /* FullGridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7534001DCE8D510048DAD4 /* FullGridCollectionViewController.swift */; };
+		EB7534091DCEDE8C0048DAD4 /* GridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7534081DCEDE8C0048DAD4 /* GridItemView.swift */; };
+		EB75340E1DCEEC150048DAD4 /* GridCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB75340C1DCEEC150048DAD4 /* GridCollectionViewItem.swift */; };
+		EB75340F1DCEEC150048DAD4 /* GridCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB75340D1DCEEC150048DAD4 /* GridCollectionViewItem.xib */; };
+		EB86D23B1D8F69A60037E366 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86D23A1D8F69A60037E366 /* AppDelegate.swift */; };
+		EB86D23D1D8F69A60037E366 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86D23C1D8F69A60037E366 /* EditorViewController.swift */; };
+		EB86D23F1D8F69A60037E366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB86D23E1D8F69A60037E366 /* Assets.xcassets */; };
+		EB86D2421D8F69A60037E366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB86D2401D8F69A60037E366 /* Main.storyboard */; };
+		EB86D24C1D8F8B240037E366 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86D24B1D8F8B240037E366 /* EditView.swift */; };
+		EB86D24E1D8F92060037E366 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86D24D1D8F92060037E366 /* Config.swift */; };
+		EBAA50471DA347F600F601AD /* EditorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAA50461DA347F600F601AD /* EditorWindowController.swift */; };
+		EBC5C8E61D9F551800AEB5EA /* CHRFileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC5C8E51D9F551800AEB5EA /* CHRFileIO.swift */; };
+		EBC5C8E81D9F561300AEB5EA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC5C8E71D9F561300AEB5EA /* Data.swift */; };
+		EBCB0D751DD95C86002F1A1B /* PaletteColorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB0D741DD95C86002F1A1B /* PaletteColorCollectionViewController.swift */; };
+		EBCB0D781DD963F7002F1A1B /* PaletteCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB0D761DD963F7002F1A1B /* PaletteCollectionViewItem.swift */; };
+		EBCB0D791DD963F7002F1A1B /* PaletteCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBCB0D771DD963F7002F1A1B /* PaletteCollectionViewItem.xib */; };
+		EBCB0D7B1DD996B5002F1A1B /* PalettePresetsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB0D7A1DD996B5002F1A1B /* PalettePresetsCollectionViewController.swift */; };
+		EBCB0D7E1DD996DF002F1A1B /* PalettePresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB0D7D1DD996DF002F1A1B /* PalettePresetView.swift */; };
+		EBCB0D811DD99791002F1A1B /* PalettePresetCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB0D7F1DD99791002F1A1B /* PalettePresetCollectionViewItem.swift */; };
+		EBCB0D821DD99791002F1A1B /* PalettePresetCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBCB0D801DD99791002F1A1B /* PalettePresetCollectionViewItem.xib */; };
+		EBCB13D51DBDC41100F74FEA /* FileSizeDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB13D41DBDC41100F74FEA /* FileSizeDialogViewController.swift */; };
+		EBD6CBA01DB31AB700E8F39A /* UserDefaults+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD6CB9F1DB31AB700E8F39A /* UserDefaults+Color.swift */; };
+		EBD6CBA21DB333BF00E8F39A /* PaletteSelectionArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD6CBA11DB333BF00E8F39A /* PaletteSelectionArrowView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EB1CB6B71DAB3590006ACA43 /* NES CHR Editor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NES CHR Editor.entitlements"; sourceTree = "<group>"; };
+		EB7534001DCE8D510048DAD4 /* FullGridCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullGridCollectionViewController.swift; sourceTree = "<group>"; };
+		EB7534081DCEDE8C0048DAD4 /* GridItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridItemView.swift; sourceTree = "<group>"; };
+		EB75340C1DCEEC150048DAD4 /* GridCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewItem.swift; sourceTree = "<group>"; };
+		EB75340D1DCEEC150048DAD4 /* GridCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridCollectionViewItem.xib; sourceTree = "<group>"; };
+		EB86D2371D8F69A60037E366 /* NES CHR Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NES CHR Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB86D23A1D8F69A60037E366 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EB86D23C1D8F69A60037E366 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		EB86D23E1D8F69A60037E366 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB86D2411D8F69A60037E366 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EB86D2431D8F69A60037E366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB86D24B1D8F8B240037E366 /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		EB86D24D1D8F92060037E366 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		EBAA50461DA347F600F601AD /* EditorWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorWindowController.swift; sourceTree = "<group>"; };
+		EBC5C8E51D9F551800AEB5EA /* CHRFileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHRFileIO.swift; sourceTree = "<group>"; };
+		EBC5C8E71D9F561300AEB5EA /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		EBCB0D741DD95C86002F1A1B /* PaletteColorCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteColorCollectionViewController.swift; sourceTree = "<group>"; };
+		EBCB0D761DD963F7002F1A1B /* PaletteCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteCollectionViewItem.swift; sourceTree = "<group>"; };
+		EBCB0D771DD963F7002F1A1B /* PaletteCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaletteCollectionViewItem.xib; sourceTree = "<group>"; };
+		EBCB0D7A1DD996B5002F1A1B /* PalettePresetsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PalettePresetsCollectionViewController.swift; sourceTree = "<group>"; };
+		EBCB0D7D1DD996DF002F1A1B /* PalettePresetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PalettePresetView.swift; sourceTree = "<group>"; };
+		EBCB0D7F1DD99791002F1A1B /* PalettePresetCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PalettePresetCollectionViewItem.swift; sourceTree = "<group>"; };
+		EBCB0D801DD99791002F1A1B /* PalettePresetCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PalettePresetCollectionViewItem.xib; sourceTree = "<group>"; };
+		EBCB13D41DBDC41100F74FEA /* FileSizeDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSizeDialogViewController.swift; sourceTree = "<group>"; };
+		EBD6CB9F1DB31AB700E8F39A /* UserDefaults+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Color.swift"; sourceTree = "<group>"; };
+		EBD6CBA11DB333BF00E8F39A /* PaletteSelectionArrowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteSelectionArrowView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EB86D2341D8F69A60037E366 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB1CB6B81DAB3CBD006ACA43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EB86D2431D8F69A60037E366 /* Info.plist */,
+				EB1CB6B71DAB3590006ACA43 /* NES CHR Editor.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EB86D22E1D8F69A60037E366 = {
+			isa = PBXGroup;
+			children = (
+				EB86D2391D8F69A60037E366 /* NES CHR Editor */,
+				EB86D2381D8F69A60037E366 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EB86D2381D8F69A60037E366 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB86D2371D8F69A60037E366 /* NES CHR Editor.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EB86D2391D8F69A60037E366 /* NES CHR Editor */ = {
+			isa = PBXGroup;
+			children = (
+				EB86D23A1D8F69A60037E366 /* AppDelegate.swift */,
+				EB86D24D1D8F92060037E366 /* Config.swift */,
+				EBC5C8E51D9F551800AEB5EA /* CHRFileIO.swift */,
+				EBC5C8E71D9F561300AEB5EA /* Data.swift */,
+				EBD6CB9F1DB31AB700E8F39A /* UserDefaults+Color.swift */,
+				EBAA50481DA3492700F601AD /* WindowControllers */,
+				EB86D2501D8FAC050037E366 /* ViewControllers */,
+				EB86D24F1D8FABF70037E366 /* Views */,
+				EB86D23E1D8F69A60037E366 /* Assets.xcassets */,
+				EB86D2401D8F69A60037E366 /* Main.storyboard */,
+				EB1CB6B81DAB3CBD006ACA43 /* Supporting Files */,
+			);
+			path = "NES CHR Editor";
+			sourceTree = "<group>";
+		};
+		EB86D24F1D8FABF70037E366 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EBCB0D7C1DD996BD002F1A1B /* Cells */,
+				EB7534081DCEDE8C0048DAD4 /* GridItemView.swift */,
+				EB86D24B1D8F8B240037E366 /* EditView.swift */,
+				EBCB0D7D1DD996DF002F1A1B /* PalettePresetView.swift */,
+				EBD6CBA11DB333BF00E8F39A /* PaletteSelectionArrowView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		EB86D2501D8FAC050037E366 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EB86D23C1D8F69A60037E366 /* EditorViewController.swift */,
+				EBCB13D41DBDC41100F74FEA /* FileSizeDialogViewController.swift */,
+				EB7534001DCE8D510048DAD4 /* FullGridCollectionViewController.swift */,
+				EBCB0D741DD95C86002F1A1B /* PaletteColorCollectionViewController.swift */,
+				EBCB0D7A1DD996B5002F1A1B /* PalettePresetsCollectionViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EBAA50481DA3492700F601AD /* WindowControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EBAA50461DA347F600F601AD /* EditorWindowController.swift */,
+			);
+			name = WindowControllers;
+			sourceTree = "<group>";
+		};
+		EBCB0D7C1DD996BD002F1A1B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EBCB0D7F1DD99791002F1A1B /* PalettePresetCollectionViewItem.swift */,
+				EBCB0D801DD99791002F1A1B /* PalettePresetCollectionViewItem.xib */,
+				EBCB0D761DD963F7002F1A1B /* PaletteCollectionViewItem.swift */,
+				EBCB0D771DD963F7002F1A1B /* PaletteCollectionViewItem.xib */,
+				EB75340C1DCEEC150048DAD4 /* GridCollectionViewItem.swift */,
+				EB75340D1DCEEC150048DAD4 /* GridCollectionViewItem.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EB86D2361D8F69A60037E366 /* NES CHR Editor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB86D2461D8F69A60037E366 /* Build configuration list for PBXNativeTarget "NES CHR Editor" */;
+			buildPhases = (
+				EB86D2331D8F69A60037E366 /* Sources */,
+				EB86D2341D8F69A60037E366 /* Frameworks */,
+				EB86D2351D8F69A60037E366 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NES CHR Editor";
+			productName = "NES CHR Editor";
+			productReference = EB86D2371D8F69A60037E366 /* NES CHR Editor.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EB86D22F1D8F69A60037E366 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Tom Salvo";
+				TargetAttributes = {
+					EB86D2361D8F69A60037E366 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 354MRHL389;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = EB86D2321D8F69A60037E366 /* Build configuration list for PBXProject "NES CHR Editor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EB86D22E1D8F69A60037E366;
+			productRefGroup = EB86D2381D8F69A60037E366 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EB86D2361D8F69A60037E366 /* NES CHR Editor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB86D2351D8F69A60037E366 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB86D23F1D8F69A60037E366 /* Assets.xcassets in Resources */,
+				EB86D2421D8F69A60037E366 /* Main.storyboard in Resources */,
+				EB75340F1DCEEC150048DAD4 /* GridCollectionViewItem.xib in Resources */,
+				EBCB0D791DD963F7002F1A1B /* PaletteCollectionViewItem.xib in Resources */,
+				EBCB0D821DD99791002F1A1B /* PalettePresetCollectionViewItem.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EB86D2331D8F69A60037E366 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBC5C8E81D9F561300AEB5EA /* Data.swift in Sources */,
+				EBCB0D7E1DD996DF002F1A1B /* PalettePresetView.swift in Sources */,
+				EBCB0D811DD99791002F1A1B /* PalettePresetCollectionViewItem.swift in Sources */,
+				EB75340E1DCEEC150048DAD4 /* GridCollectionViewItem.swift in Sources */,
+				EB86D24C1D8F8B240037E366 /* EditView.swift in Sources */,
+				EBCB0D751DD95C86002F1A1B /* PaletteColorCollectionViewController.swift in Sources */,
+				EB86D23D1D8F69A60037E366 /* EditorViewController.swift in Sources */,
+				EB7534091DCEDE8C0048DAD4 /* GridItemView.swift in Sources */,
+				EB7534011DCE8D510048DAD4 /* FullGridCollectionViewController.swift in Sources */,
+				EBCB0D7B1DD996B5002F1A1B /* PalettePresetsCollectionViewController.swift in Sources */,
+				EB86D24E1D8F92060037E366 /* Config.swift in Sources */,
+				EBCB13D51DBDC41100F74FEA /* FileSizeDialogViewController.swift in Sources */,
+				EBD6CBA21DB333BF00E8F39A /* PaletteSelectionArrowView.swift in Sources */,
+				EBAA50471DA347F600F601AD /* EditorWindowController.swift in Sources */,
+				EB86D23B1D8F69A60037E366 /* AppDelegate.swift in Sources */,
+				EBD6CBA01DB31AB700E8F39A /* UserDefaults+Color.swift in Sources */,
+				EBC5C8E61D9F551800AEB5EA /* CHRFileIO.swift in Sources */,
+				EBCB0D781DD963F7002F1A1B /* PaletteCollectionViewItem.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EB86D2401D8F69A60037E366 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB86D2411D8F69A60037E366 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EB86D2441D8F69A60037E366 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EB86D2451D8F69A60037E366 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		EB86D2471D8F69A60037E366 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "NES CHR Editor/NES CHR Editor.entitlements";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 354MRHL389;
+				INFOPLIST_FILE = "NES CHR Editor/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomsalvo.NES-CHR-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		EB86D2481D8F69A60037E366 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "NES CHR Editor/NES CHR Editor.entitlements";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 354MRHL389;
+				INFOPLIST_FILE = "NES CHR Editor/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomsalvo.NES-CHR-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EB86D2321D8F69A60037E366 /* Build configuration list for PBXProject "NES CHR Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB86D2441D8F69A60037E366 /* Debug */,
+				EB86D2451D8F69A60037E366 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB86D2461D8F69A60037E366 /* Build configuration list for PBXNativeTarget "NES CHR Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB86D2471D8F69A60037E366 /* Debug */,
+				EB86D2481D8F69A60037E366 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EB86D22F1D8F69A60037E366 /* Project object */;
+}

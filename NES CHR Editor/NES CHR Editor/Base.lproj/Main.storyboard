@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="JPo-4y-FX3">
+            <objects>
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+                        <items>
+                            <menuItem title="NES CHR Editor" id="1Xt-HY-uBw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="NES CHR Editor" systemMenu="apple" id="uQy-DD-JDr">
+                                    <items>
+                                        <menuItem title="About NES CHR Editor" id="5kV-Vb-QxS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
+                                        <menuItem title="Services" id="NMo-om-nkz">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
+                                        <menuItem title="Hide NES CHR Editor" keyEquivalent="h" id="Olw-nP-bQN">
+                                            <connections>
+                                                <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="VT4-aY-XCT"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Show All" id="Kd2-mp-pUS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="Dhg-Le-xox"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                                        <menuItem title="Quit NES CHR Editor" keyEquivalent="q" id="4sb-4s-VLi">
+                                            <connections>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="File" tag="1" id="dMs-cI-mzQ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="File" id="bib-Uj-vzu">
+                                    <items>
+                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
+                                            <connections>
+                                                <action selector="newWindowMenuItemSelectedWithSender:" target="Voe-Tx-rLC" id="h1h-Ey-Qtq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open…" tag="1" keyEquivalent="o" id="IAo-SY-fd9" userLabel="Open CHR FIle…">
+                                            <connections>
+                                                <action selector="openMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="bqD-WY-WdO"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open Recent" tag="2" id="tXI-mr-wws">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="oas-Oc-fiZ">
+                                                <items>
+                                                    <menuItem title="Clear Menu" id="vNY-rz-j42">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="clearRecentDocuments:" target="Ady-hI-5gd" id="Daa-9d-B3U"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" tag="3" id="m54-Is-iLE"/>
+                                        <menuItem title="Import CHR from NES ROM…" tag="4" keyEquivalent="O" id="zk7-mX-9HD" userLabel="Import CHR from NES ROM…">
+                                            <connections>
+                                                <action selector="importFromNESROMMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="ieM-ni-khs"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export CHR to NES ROM…" tag="5" id="rfD-7e-gnk">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportToNESROMFileMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="OZQ-wr-Ti3"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" tag="6" id="q5s-kg-xh7"/>
+                                        <menuItem title="Close" tag="7" keyEquivalent="w" id="DVo-aG-piG">
+                                            <connections>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="jBq-wt-rBJ"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save…" tag="8" keyEquivalent="s" id="pxx-59-PXV">
+                                            <connections>
+                                                <action selector="saveMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="MRs-pF-Fcd"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save As…" tag="9" keyEquivalent="S" id="Bw7-FT-i3A">
+                                            <connections>
+                                                <action selector="saveAsMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="CkY-qB-VVA"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Edit" tag="2" id="5QF-Oa-p0T">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Edit" id="W48-6f-4Dl">
+                                    <items>
+                                        <menuItem title="Undo" keyEquivalent="z" id="dRJ-4n-Yzg">
+                                            <connections>
+                                                <action selector="undoMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="iVL-AW-Vn2"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Redo" keyEquivalent="Z" id="6dh-zS-Vam">
+                                            <connections>
+                                                <action selector="redoMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="MLD-pO-cAM"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="WRV-NI-Exz"/>
+                                        <menuItem title="Cut" keyEquivalent="x" id="uRl-iY-unG">
+                                            <connections>
+                                                <action selector="cutMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="bXA-2b-wnM"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="x3v-GG-iWU">
+                                            <connections>
+                                                <action selector="copyMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="bjy-2c-Td1"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste" keyEquivalent="v" id="gVA-U4-sdL">
+                                            <connections>
+                                                <action selector="pasteMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="D4q-ox-Deg"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select All" keyEquivalent="a" id="Ruw-6m-B2m">
+                                            <connections>
+                                                <action selector="selectAll:" target="Ady-hI-5gd" id="VNm-Mi-diN"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="View" tag="3" id="H8h-7b-M4v">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="View" id="HyV-fh-RgO">
+                                    <items>
+                                        <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleFullScreen:" target="Ady-hI-5gd" id="dU3-MA-1Rq"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Window" tag="3" id="aUF-d1-5bR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                                    <items>
+                                        <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
+                                            <connections>
+                                                <action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Zoom" id="R4o-n2-Eq4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="performZoom:" target="Ady-hI-5gd" id="DIl-cC-cCs"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
+                                        <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="arrangeInFront:" target="Ady-hI-5gd" id="DRN-fu-gQh"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Help" tag="4" id="wpr-3q-Mcd">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
+                                    <items>
+                                        <menuItem title="NES CHR Editor Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                            <connections>
+                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                    </connections>
+                </application>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="NES_CHR_Editor" customModuleProvider="target">
+                    <connections>
+                        <outlet property="saveMenuItem" destination="pxx-59-PXV" id="aD5-w4-Yv1"/>
+                    </connections>
+                </customObject>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="103"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="R2V-B0-nI4">
+            <objects>
+                <windowController id="B8D-0N-5wS" customClass="EditorWindowController" customModule="NES_CHR_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="CHR Editor" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                    </window>
+                    <connections>
+                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                    </connections>
+                </windowController>
+                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="326"/>
+        </scene>
+        <!--NES CHR Editor-->
+        <scene sceneID="hIz-AP-VOD">
+            <objects>
+                <viewController title="NES CHR Editor" id="XfG-lQ-9wD" customClass="EditorViewController" customModule="NES_CHR_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="555" height="581"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Z37-92-vyl" userLabel="Full Grid Container">
+                                <rect key="frame" x="10" y="10" width="328" height="561"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="7N7-zw-28k"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="y6k-qo-4eN"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="jur-mI-ggf" kind="embed" id="Hh6-5E-7uf"/>
+                                </connections>
+                            </containerView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="6Nm-ug-xGm" userLabel="Tile Edit View" customClass="EditView" customModule="NES_CHR_Editor" customModuleProvider="target">
+                                <rect key="frame" x="353" y="379" width="192" height="192"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6Nm-ug-xGm" secondAttribute="height" multiplier="1:1" id="HSL-Ow-PSS"/>
+                                    <constraint firstAttribute="width" constant="192" id="q5C-0l-gYu"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="mtc-3K-6lt" userLabel="Controls">
+                                <rect key="frame" x="353" y="316" width="192" height="48"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ycF-Vg-c6h" userLabel="Colors">
+                                        <rect key="frame" x="0.0" y="0.0" width="192" height="48"/>
+                                        <subviews>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="k7T-Oj-Vpd" userLabel="0">
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="k7T-Oj-Vpd" secondAttribute="height" multiplier="1:1" id="9Ic-bV-Ux0"/>
+                                                </constraints>
+                                                <gestureRecognizers>
+                                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="9X2-Dq-QJj">
+                                                        <connections>
+                                                            <action selector="palette0PressedWithSender:" target="XfG-lQ-9wD" id="LHr-c5-dSX"/>
+                                                        </connections>
+                                                    </clickGestureRecognizer>
+                                                </gestureRecognizers>
+                                            </customView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="v3v-H2-w3d" userLabel="1">
+                                                <rect key="frame" x="48" y="0.0" width="48" height="48"/>
+                                                <gestureRecognizers>
+                                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="Ond-LC-nvP">
+                                                        <connections>
+                                                            <action selector="palette1PressedWithSender:" target="XfG-lQ-9wD" id="wB3-0m-a0j"/>
+                                                        </connections>
+                                                    </clickGestureRecognizer>
+                                                </gestureRecognizers>
+                                            </customView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="HGr-7a-i64" userLabel="2">
+                                                <rect key="frame" x="96" y="0.0" width="48" height="48"/>
+                                                <gestureRecognizers>
+                                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="uiG-IG-dCH">
+                                                        <connections>
+                                                            <action selector="palette2PressedWithSender:" target="XfG-lQ-9wD" id="Jhr-8J-hRO"/>
+                                                        </connections>
+                                                    </clickGestureRecognizer>
+                                                </gestureRecognizers>
+                                            </customView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="f9Q-lR-exY" userLabel="3">
+                                                <rect key="frame" x="144" y="0.0" width="48" height="48"/>
+                                                <gestureRecognizers>
+                                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="gfr-rz-Y3A">
+                                                        <connections>
+                                                            <action selector="palette3PressedWithSender:" target="XfG-lQ-9wD" id="BVn-ZE-7Le"/>
+                                                        </connections>
+                                                    </clickGestureRecognizer>
+                                                </gestureRecognizers>
+                                            </customView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="HGr-7a-i64" firstAttribute="trailing" secondItem="f9Q-lR-exY" secondAttribute="leading" id="3nL-PX-2dh"/>
+                                            <constraint firstItem="k7T-Oj-Vpd" firstAttribute="width" secondItem="v3v-H2-w3d" secondAttribute="width" id="4hn-gE-7vl"/>
+                                            <constraint firstItem="HGr-7a-i64" firstAttribute="centerY" secondItem="v3v-H2-w3d" secondAttribute="centerY" id="6fX-Pg-0NU"/>
+                                            <constraint firstItem="k7T-Oj-Vpd" firstAttribute="height" secondItem="v3v-H2-w3d" secondAttribute="height" id="K2K-NF-Wq6"/>
+                                            <constraint firstAttribute="trailing" secondItem="f9Q-lR-exY" secondAttribute="trailing" id="Pw9-ng-FJf"/>
+                                            <constraint firstItem="HGr-7a-i64" firstAttribute="height" secondItem="f9Q-lR-exY" secondAttribute="height" id="RWf-z8-0ob"/>
+                                            <constraint firstItem="k7T-Oj-Vpd" firstAttribute="centerY" secondItem="ycF-Vg-c6h" secondAttribute="centerY" id="T1w-Gc-XxH"/>
+                                            <constraint firstItem="v3v-H2-w3d" firstAttribute="height" secondItem="HGr-7a-i64" secondAttribute="height" id="TAS-TR-moi"/>
+                                            <constraint firstItem="v3v-H2-w3d" firstAttribute="trailing" secondItem="HGr-7a-i64" secondAttribute="leading" id="Trk-Y4-uQM"/>
+                                            <constraint firstItem="v3v-H2-w3d" firstAttribute="centerY" secondItem="k7T-Oj-Vpd" secondAttribute="centerY" id="UbZ-Ho-37D"/>
+                                            <constraint firstItem="k7T-Oj-Vpd" firstAttribute="leading" secondItem="ycF-Vg-c6h" secondAttribute="leading" id="d40-f2-R1d"/>
+                                            <constraint firstItem="k7T-Oj-Vpd" firstAttribute="trailing" secondItem="v3v-H2-w3d" secondAttribute="leading" id="eDx-hz-xma"/>
+                                            <constraint firstItem="f9Q-lR-exY" firstAttribute="centerY" secondItem="HGr-7a-i64" secondAttribute="centerY" id="fu4-TX-E06"/>
+                                            <constraint firstAttribute="width" secondItem="ycF-Vg-c6h" secondAttribute="height" multiplier="4:1" id="obW-QC-rCf"/>
+                                            <constraint firstItem="v3v-H2-w3d" firstAttribute="width" secondItem="HGr-7a-i64" secondAttribute="width" id="sIw-kV-KmY"/>
+                                            <constraint firstItem="HGr-7a-i64" firstAttribute="width" secondItem="f9Q-lR-exY" secondAttribute="width" id="ut3-2d-5NJ"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ycF-Vg-c6h" firstAttribute="top" secondItem="mtc-3K-6lt" secondAttribute="top" id="7XW-EV-0s3"/>
+                                    <constraint firstAttribute="trailing" secondItem="ycF-Vg-c6h" secondAttribute="trailing" id="CLS-co-cFM"/>
+                                    <constraint firstAttribute="bottom" secondItem="ycF-Vg-c6h" secondAttribute="bottom" id="gmh-IR-fFX"/>
+                                    <constraint firstItem="ycF-Vg-c6h" firstAttribute="leading" secondItem="mtc-3K-6lt" secondAttribute="leading" id="ufe-60-loA"/>
+                                </constraints>
+                            </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5iD-pS-Nc8">
+                                <rect key="frame" x="351" y="286" width="96" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Palette Presets" id="ki4-pg-qiQ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="sWB-kj-iRJ" userLabel="Palette Presets Container">
+                                <rect key="frame" x="353" y="231" width="192" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sWB-kj-iRJ" secondAttribute="height" multiplier="7:2" id="PXy-zF-pTB"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="ngJ-UK-eBT" kind="embed" id="RWJ-Z4-bC6"/>
+                                </connections>
+                            </containerView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pWX-c8-EUH">
+                                <rect key="frame" x="351" y="201" width="73" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NES Colors" id="EkD-iC-z3T">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="zAz-4I-8wR" userLabel="NES Colors Container">
+                                <rect key="frame" x="353" y="146" width="192" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zAz-4I-8wR" secondAttribute="height" multiplier="7:2" id="7eh-V6-DEJ"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="A66-Qe-H8A" kind="embed" id="N01-4i-5Vk"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Z37-92-vyl" secondAttribute="bottom" constant="10" id="1Lc-aF-oUH"/>
+                            <constraint firstItem="5iD-pS-Nc8" firstAttribute="leading" secondItem="sWB-kj-iRJ" secondAttribute="leading" id="2fI-Me-Lz9"/>
+                            <constraint firstItem="Z37-92-vyl" firstAttribute="top" secondItem="6Nm-ug-xGm" secondAttribute="top" id="4AZ-Sd-3m9"/>
+                            <constraint firstItem="sWB-kj-iRJ" firstAttribute="leading" secondItem="6Nm-ug-xGm" secondAttribute="leading" id="57b-KI-INk"/>
+                            <constraint firstAttribute="trailing" secondItem="6Nm-ug-xGm" secondAttribute="trailing" constant="10" id="8hA-El-unu"/>
+                            <constraint firstItem="mtc-3K-6lt" firstAttribute="top" secondItem="6Nm-ug-xGm" secondAttribute="bottom" constant="15" id="A5O-Ae-KqK"/>
+                            <constraint firstItem="sWB-kj-iRJ" firstAttribute="top" secondItem="5iD-pS-Nc8" secondAttribute="bottom" id="Ftc-3I-diG"/>
+                            <constraint firstItem="zAz-4I-8wR" firstAttribute="leading" secondItem="6Nm-ug-xGm" secondAttribute="leading" id="KJp-x7-D4d"/>
+                            <constraint firstItem="zAz-4I-8wR" firstAttribute="trailing" secondItem="6Nm-ug-xGm" secondAttribute="trailing" id="LPi-t9-87K"/>
+                            <constraint firstItem="Z37-92-vyl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="MQ7-oO-eFr"/>
+                            <constraint firstItem="mtc-3K-6lt" firstAttribute="trailing" secondItem="6Nm-ug-xGm" secondAttribute="trailing" id="NAc-VA-bLo"/>
+                            <constraint firstItem="zAz-4I-8wR" firstAttribute="top" secondItem="pWX-c8-EUH" secondAttribute="bottom" id="QGT-m3-U3P"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zAz-4I-8wR" secondAttribute="bottom" constant="10" id="WTC-ze-X9d"/>
+                            <constraint firstItem="6Nm-ug-xGm" firstAttribute="leading" secondItem="Z37-92-vyl" secondAttribute="trailing" constant="15" id="eJo-JL-uxi"/>
+                            <constraint firstItem="mtc-3K-6lt" firstAttribute="leading" secondItem="6Nm-ug-xGm" secondAttribute="leading" id="eZE-5V-6ed"/>
+                            <constraint firstItem="sWB-kj-iRJ" firstAttribute="trailing" secondItem="6Nm-ug-xGm" secondAttribute="trailing" id="eqr-WY-Iw7"/>
+                            <constraint firstItem="pWX-c8-EUH" firstAttribute="leading" secondItem="zAz-4I-8wR" secondAttribute="leading" id="l9k-YR-4EW"/>
+                            <constraint firstItem="sWB-kj-iRJ" firstAttribute="top" secondItem="mtc-3K-6lt" secondAttribute="bottom" constant="30" id="m4d-1p-3CH"/>
+                            <constraint firstItem="zAz-4I-8wR" firstAttribute="top" secondItem="sWB-kj-iRJ" secondAttribute="bottom" constant="30" id="no5-bs-kSu"/>
+                            <constraint firstItem="Z37-92-vyl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="upB-wH-UKS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="editView" destination="6Nm-ug-xGm" id="pKH-oA-bCm"/>
+                        <outlet property="palletteView0" destination="k7T-Oj-Vpd" id="Nmg-Qd-CjR"/>
+                        <outlet property="palletteView1" destination="v3v-H2-w3d" id="vii-di-ShL"/>
+                        <outlet property="palletteView2" destination="HGr-7a-i64" id="5b0-Zn-W4P"/>
+                        <outlet property="palletteView3" destination="f9Q-lR-exY" id="bxY-bp-WMa"/>
+                        <segue destination="sf9-JZ-Ehp" kind="modal" identifier="presentFileSelectionDialog" id="EXO-VL-qtU"/>
+                    </connections>
+                </viewController>
+                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30.5" y="932.5"/>
+        </scene>
+        <!--CHR Size Selection-->
+        <scene sceneID="QPt-hD-Vro">
+            <objects>
+                <viewController title="File Size" id="sf9-JZ-Ehp" userLabel="CHR Size Selection" customClass="FileSizeDialogViewController" customModule="NES_CHR_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="IkJ-Jm-pcX">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="180"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="5CI-aV-Fbo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561" y="901"/>
+        </scene>
+        <!--Palette Color Collection View Controller-->
+        <scene sceneID="0lZ-ev-cEJ">
+            <objects>
+                <viewController id="A66-Qe-H8A" customClass="PaletteColorCollectionViewController" customModule="NES_CHR_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="a93-Xg-eGp">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="113"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="JuJ-WU-r4U">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="113"/>
+                                <clipView key="contentView" drawsBackground="NO" id="cRV-8h-NRm">
+                                    <rect key="frame" x="1" y="1" width="448" height="111"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView selectable="YES" id="S7c-ax-ke1">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="111"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="skC-JJ-dsN">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="kOk-Es-Usw">
+                                    <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="cE5-0S-bZx">
+                                    <rect key="frame" x="-100" y="-100" width="16" height="111"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="JuJ-WU-r4U" secondAttribute="bottom" id="Mdv-4d-FGv"/>
+                            <constraint firstItem="JuJ-WU-r4U" firstAttribute="top" secondItem="a93-Xg-eGp" secondAttribute="top" id="UzT-IR-5lV"/>
+                            <constraint firstAttribute="trailing" secondItem="JuJ-WU-r4U" secondAttribute="trailing" id="iu6-NC-1l9"/>
+                            <constraint firstItem="JuJ-WU-r4U" firstAttribute="leading" secondItem="a93-Xg-eGp" secondAttribute="leading" id="oNs-VJ-aHq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="paletteSelectionCollectionView" destination="S7c-ax-ke1" id="tFt-eZ-XvU"/>
+                    </connections>
+                </viewController>
+                <customObject id="sjC-ME-zSI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="635" y="1150"/>
+        </scene>
+        <!--Palette Presets Collection View Controller-->
+        <scene sceneID="1AM-lB-ruR">
+            <objects>
+                <viewController id="ngJ-UK-eBT" customClass="PalettePresetsCollectionViewController" customModule="NES_CHR_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="G5o-jm-on6">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvU-XO-giP">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" drawsBackground="NO" id="g6m-S7-hKh">
+                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView selectable="YES" id="uUH-uD-xrt">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="hoK-bg-7kv">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="0km-NF-TNh">
+                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="UCn-yG-QX4">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="EvU-XO-giP" firstAttribute="leading" secondItem="G5o-jm-on6" secondAttribute="leading" id="0lL-ai-MGm"/>
+                            <constraint firstItem="EvU-XO-giP" firstAttribute="top" secondItem="G5o-jm-on6" secondAttribute="top" id="5QS-cX-Lva"/>
+                            <constraint firstAttribute="trailing" secondItem="EvU-XO-giP" secondAttribute="trailing" id="gNh-o3-xeo"/>
+                            <constraint firstAttribute="bottom" secondItem="EvU-XO-giP" secondAttribute="bottom" id="q0r-Yu-Zrh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="paletteSelectionCollectionView" destination="uUH-uD-xrt" id="YmA-he-8N6"/>
+                    </connections>
+                </viewController>
+                <customObject id="Q2h-7i-pfr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="596" y="1499"/>
+        </scene>
+        <!--Full Grid Collection View Controller-->
+        <scene sceneID="9Ro-9U-sWO">
+            <objects>
+                <viewController id="jur-mI-ggf" customClass="FullGridCollectionViewController" customModule="NES_CHR_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="HwS-iH-5Eb">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kfq-0j-Ue3">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" drawsBackground="NO" id="WGV-lK-ABj">
+                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView selectable="YES" allowsEmptySelection="NO" id="t7O-he-br6">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" id="tqb-Xb-vRk">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="jur-mI-ggf" id="ffn-2y-civ"/>
+                                                <outlet property="delegate" destination="jur-mI-ggf" id="6gY-2c-peD"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="7sO-ae-F34">
+                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="uoI-8U-4RJ">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Kfq-0j-Ue3" firstAttribute="top" secondItem="HwS-iH-5Eb" secondAttribute="top" id="KgC-g4-6Rb"/>
+                            <constraint firstAttribute="trailing" secondItem="Kfq-0j-Ue3" secondAttribute="trailing" id="MGz-vc-CYh"/>
+                            <constraint firstItem="Kfq-0j-Ue3" firstAttribute="leading" secondItem="HwS-iH-5Eb" secondAttribute="leading" id="OTi-Mp-48r"/>
+                            <constraint firstAttribute="bottom" secondItem="Kfq-0j-Ue3" secondAttribute="bottom" id="ZkD-Ff-F3R"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gridCollectionView" destination="t7O-he-br6" id="RUf-0x-SqN"/>
+                    </connections>
+                </viewController>
+                <customObject id="bHo-mr-9dd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="1532"/>
+        </scene>
+    </scenes>
+</document>
