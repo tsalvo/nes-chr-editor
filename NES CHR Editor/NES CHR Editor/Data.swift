@@ -12,8 +12,17 @@ public enum PaletteColor {
     case Color0, Color1, Color2, Color3
     
     var color: NSColor {
+        
+        let isUsingCustomIndexedPaletteSet = UserDefaults.standard.bool(forKey: "UseCustomPaletteSet")
+        
         let indexOfSelectedPaletteSet = UserDefaults.standard.integer(forKey: "IndexedPaletteSet")
-        let indexedPaletteSet = IndexedPaletteSets[indexOfSelectedPaletteSet % IndexedPaletteSets.count]
+        let indexedPaletteSet = isUsingCustomIndexedPaletteSet ?
+            IndexedPaletteSet(
+                color0: UInt8(UserDefaults.standard.integer(forKey: "CustomPaletteSetIndexedColor0")),
+                color1: UInt8(UserDefaults.standard.integer(forKey: "CustomPaletteSetIndexedColor1")),
+                color2: UInt8(UserDefaults.standard.integer(forKey: "CustomPaletteSetIndexedColor2")),
+                color3: UInt8(UserDefaults.standard.integer(forKey: "CustomPaletteSetIndexedColor3"))) :
+            IndexedPaletteSets[indexOfSelectedPaletteSet % IndexedPaletteSets.count]
         
         switch self {
         case .Color0: return NESPaletteColors[Int(indexedPaletteSet.color0)]
@@ -33,6 +42,13 @@ public struct IndexedPaletteSet {
     var colorForSelectedPalette:UInt8 = 18 // magenta
     var colorForGridLines:UInt8 = 0 // gray
     init() { }
+    init(color0 aC0:UInt8, color1 aC1:UInt8, color2 aC2:UInt8, color3 aC3:UInt8) {
+        let count = UInt8(NESPaletteColors.count)
+        self.color0 = aC0 % count
+        self.color1 = aC1 % count
+        self.color2 = aC2 % count
+        self.color3 = aC3 % count
+    }
     init(color0 aC0:UInt8, color1 aC1:UInt8, color2 aC2:UInt8, color3 aC3:UInt8, selectedCHR aSC:UInt8, selectedPalette aSP:UInt8, gridLines aG:UInt8) {
         let count = UInt8(NESPaletteColors.count)
         self.color0 = aC0 % count

@@ -9,7 +9,7 @@
 import AppKit
 
 protocol PaletteColorSelectionProtocol {
-    func paletteColorSelected(withColor aColor:NSColor)
+    func paletteColorSelected(withColor aColor:NSColor, atIndex aIndex:UInt)
 }
 
 class PaletteColorCollectionViewController: NSViewController, NSCollectionViewDelegateFlowLayout, NSCollectionViewDataSource {
@@ -43,7 +43,7 @@ class PaletteColorCollectionViewController: NSViewController, NSCollectionViewDe
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         
         if let safeFirstIndexPath = indexPaths.first {
-            self.paletteColorSelectionDelegate?.paletteColorSelected(withColor: NESPaletteColors[safeFirstIndexPath.item])
+            self.paletteColorSelectionDelegate?.paletteColorSelected(withColor: NESPaletteColors[safeFirstIndexPath.item], atIndex:UInt(safeFirstIndexPath.item))
         }
     }
     

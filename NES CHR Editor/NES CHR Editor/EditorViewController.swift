@@ -93,8 +93,32 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     
     // MARK: - PaletteColorSelectionProtocol
     
-    func paletteColorSelected(withColor aColor: NSColor) {
-        Swift.print("paletteColorSelected \(aColor)")
+    func paletteColorSelected(withColor aColor: NSColor, atIndex aIndex:UInt) {
+        Swift.print("paletteColorSelected:\(aColor) index: \(aIndex)")
+        
+        let isUsingCustomIndexedPaletteSet = UserDefaults.standard.bool(forKey: "UseCustomPaletteSet")
+        
+        if !isUsingCustomIndexedPaletteSet {
+            let indexOfSelectedPaletteSet = UserDefaults.standard.integer(forKey: "IndexedPaletteSet")
+            let indexedPaletteSet = IndexedPaletteSets[indexOfSelectedPaletteSet % IndexedPaletteSets.count]
+            UserDefaults.standard.set(Int(indexedPaletteSet.color0), forKey:"CustomPaletteSetIndexedColor0")
+            UserDefaults.standard.set(Int(indexedPaletteSet.color1), forKey:"CustomPaletteSetIndexedColor1")
+            UserDefaults.standard.set(Int(indexedPaletteSet.color2), forKey:"CustomPaletteSetIndexedColor2")
+            UserDefaults.standard.set(Int(indexedPaletteSet.color3), forKey:"CustomPaletteSetIndexedColor3")
+            UserDefaults.standard.set(true, forKey: "UseCustomPaletteSet")
+        }
+        
+        switch self.editView.brushColor {
+        case .Color0: UserDefaults.standard.set(aIndex, forKey: "CustomPaletteSetIndexedColor0")
+        case .Color1: UserDefaults.standard.set(aIndex, forKey: "CustomPaletteSetIndexedColor1")
+        case .Color2: UserDefaults.standard.set(aIndex, forKey: "CustomPaletteSetIndexedColor2")
+        case .Color3: UserDefaults.standard.set(aIndex, forKey: "CustomPaletteSetIndexedColor3")
+        }
+        
+        UserDefaults.standard.synchronize()
+        
+        self.refreshControls()
+        self.editView.setNeedsDisplay(editView.bounds)
     }
     
     // MARK: - PalettePresetSelectionProtocol
@@ -102,6 +126,7 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     func palettePresetSelected(withPreset aPreset:IndexedPaletteSet, atIndex aIndex:Int) {
         Swift.print("palettePresetSelected : colors \(aPreset.color0), \(aPreset.color1), \(aPreset.color2), \(aPreset.color3)")
         
+        UserDefaults.standard.set(false, forKey: "UseCustomPaletteSet")
         UserDefaults.standard.set(aIndex, forKey: "IndexedPaletteSet")
         UserDefaults.standard.synchronize()
         
