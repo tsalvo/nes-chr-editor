@@ -17,9 +17,13 @@ class PalettePresetsCollectionViewController: NSViewController, NSCollectionView
     @IBOutlet weak var paletteSelectionCollectionView:NSCollectionView!
     var palettePresetSelectionDelegate:PalettePresetSelectionProtocol?
     
+    var selectedIndexPaletteSet:Int { return UserDefaults.standard.integer(forKey: "IndexedPaletteSet")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.paletteSelectionCollectionView.allowsMultipleSelection = false
+        self.paletteSelectionCollectionView.allowsEmptySelection = false
         self.paletteSelectionCollectionView.delegate = self
         self.paletteSelectionCollectionView.dataSource = self
         
@@ -44,6 +48,8 @@ class PalettePresetsCollectionViewController: NSViewController, NSCollectionView
         
         if let safeFirstIndexPath = indexPaths.first {
             self.palettePresetSelectionDelegate?.palettePresetSelected(withPreset: IndexedPaletteSets[safeFirstIndexPath.item], atIndex: safeFirstIndexPath.item)
+            
+           collectionView.reloadData()
         }
     }
     
@@ -58,6 +64,7 @@ class PalettePresetsCollectionViewController: NSViewController, NSCollectionView
         guard let item = collectionView.makeItem(withIdentifier: "palettePresetCollectionViewItem", for: indexPath) as? PalettePresetCollectionViewItem else { return NSCollectionViewItem() }
         
         item.presetView.palettePreset = IndexedPaletteSets[indexPath.item]
+        item.isSelectedPreset = (indexPath.item == self.selectedIndexPaletteSet)
         item.presetView.setNeedsDisplay(item.presetView.bounds)
         
         return item
