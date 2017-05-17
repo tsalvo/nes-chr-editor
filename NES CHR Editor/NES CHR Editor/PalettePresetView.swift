@@ -18,32 +18,44 @@ class PalettePresetView: NSView {
 
         // Drawing code here.
         
-        let count = NESPaletteColors.count
-        let blockSize = CGSize(width: bounds.width, height: bounds.height/4)
+        let count:Int = NESPaletteColors.count
+        let colorSizeAsPercentageOfFullBounds:CGFloat = 0.7
+        
+        let blockSize = CGSize(width: bounds.width * colorSizeAsPercentageOfFullBounds,
+                               height: bounds.height * colorSizeAsPercentageOfFullBounds / 4)
+        
+        if self.isSelected
+        {
+            NSColor.purple.setFill()
+            NSRectFill(self.bounds)
+        }
+        
+        let xOffset:CGFloat = (1.0 - colorSizeAsPercentageOfFullBounds) * 0.5 * bounds.width
+        let yOffset:CGFloat = (1.0 - colorSizeAsPercentageOfFullBounds) * 0.5 * bounds.height
+        
         NESPaletteColors[Int(palettePreset.color0) % count].setFill()
         NSRectFill(
-            CGRect(x: 0,
-                   y: 0,
+            CGRect(x: xOffset,
+                   y: yOffset,
                    width: blockSize.width,
                    height: blockSize.height))
         NESPaletteColors[Int(palettePreset.color1) % count].setFill()
         NSRectFill(
-            CGRect(x: 0,
-                   y: blockSize.height,
+            CGRect(x: xOffset,
+                   y: yOffset + blockSize.height,
                    width: blockSize.width,
                    height: blockSize.height))
         NESPaletteColors[Int(palettePreset.color2) % count].setFill()
         NSRectFill(
-            CGRect(x: 0,
-                   y: blockSize.height*2,
+            CGRect(x: xOffset,
+                   y: yOffset + blockSize.height * 2,
                    width: blockSize.width,
                    height: blockSize.height))
         NESPaletteColors[Int(palettePreset.color3) % count].setFill()
         NSRectFill(
-            CGRect(x: 0,
-                   y: blockSize.height*3,
+            CGRect(x: xOffset,
+                   y: yOffset + blockSize.height * 3,
                    width: blockSize.width,
                    height: blockSize.height))
     }
-    
 }

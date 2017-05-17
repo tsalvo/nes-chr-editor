@@ -11,6 +11,11 @@ import Cocoa
 class PalettePresetCollectionViewItem: NSCollectionViewItem {
 
     var presetView:PalettePresetView = PalettePresetView()
+    var isSelectedPreset:Bool? {
+        didSet {
+            self.presetView.isSelected = isSelectedPreset ?? false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
