@@ -14,7 +14,7 @@ protocol PalettePresetSelectionProtocol {
 
 class PalettePresetsCollectionViewController: NSViewController, NSCollectionViewDelegateFlowLayout, NSCollectionViewDataSource {
     
-    @IBOutlet weak var paletteSelectionCollectionView:NSCollectionView!
+    @IBOutlet weak private var paletteSelectionCollectionView:NSCollectionView!
     var palettePresetSelectionDelegate:PalettePresetSelectionProtocol?
     
     var selectedIndexPaletteSet:Int { return UserDefaults.standard.integer(forKey: "IndexedPaletteSet")
@@ -24,16 +24,31 @@ class PalettePresetsCollectionViewController: NSViewController, NSCollectionView
         super.viewDidLoad()
         self.paletteSelectionCollectionView.allowsMultipleSelection = false
         self.paletteSelectionCollectionView.allowsEmptySelection = false
+        
+        self.paletteSelectionCollectionView.register(PalettePresetCollectionViewItem.self, forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "palettePresetCollectionViewItem"))
+        
         self.paletteSelectionCollectionView.delegate = self
         self.paletteSelectionCollectionView.dataSource = self
-        
-        self.paletteSelectionCollectionView.register(PalettePresetCollectionViewItem.self, forItemWithIdentifier: "palettePresetCollectionViewItem")
+    }
+    
+//    override func viewWillAppear() {
+//        super.viewWillAppear()
+//        self.paletteSelectionCollectionView.reloadData()
+//    }
+    
+    override func viewWillLayout() {
+        super.viewWillLayout()
+        self.paletteSelectionCollectionView.collectionViewLayout?.invalidateLayout()
     }
     
     // MARK: - NSCollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        return NSSize(width: collectionView.bounds.width / 10.5, height: collectionView.bounds.height)
+        
+        let width = min(collectionView.bounds.width, collectionView.bounds.width / 10.5)
+        let height = min(collectionView.bounds.height, width * 4)
+        let size = NSSize(width: width, height: height)
+        return size
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -44,12 +59,22 @@ class PalettePresetsCollectionViewController: NSViewController, NSCollectionView
         return 0
     }
     
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, insetForSectionAt section: Int) -> NSEdgeInsets {
+        return NSEdgeInsetsZero
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
+        return NSSize.zero
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForFooterInSection section: Int) -> NSSize {
+        return NSSize.zero
+    }
+    
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         
         if let safeFirstIndexPath = indexPaths.first {
             self.palettePresetSelectionDelegate?.palettePresetSelected(withPreset: IndexedPaletteSets[safeFirstIndexPath.item], atIndex: safeFirstIndexPath.item)
-            
-           collectionView.reloadData()
         }
     }
     
@@ -61,7 +86,7 @@ class PalettePresetsCollectionViewController: NSViewController, NSCollectionView
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         // Recycle or create an item.
-        guard let item = collectionView.makeItem(withIdentifier: "palettePresetCollectionViewItem", for: indexPath) as? PalettePresetCollectionViewItem else { return NSCollectionViewItem() }
+        guard let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "palettePresetCollectionViewItem"), for: indexPath) as? PalettePresetCollectionViewItem else { return NSCollectionViewItem() }
         
         item.presetView.palettePreset = IndexedPaletteSets[indexPath.item]
         item.isSelectedPreset = (indexPath.item == self.selectedIndexPaletteSet)

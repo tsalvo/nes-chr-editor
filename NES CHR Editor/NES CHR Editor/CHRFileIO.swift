@@ -33,7 +33,7 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid) -> URL? {
     
     let result = savePanel.runModal()
     
-    if result == NSFileHandlingPanelOKButton {
+    if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
         
         guard let fileURL = savePanel.url else { return nil }
         
@@ -70,7 +70,7 @@ func openCHRFile() -> (grid: CHRGrid?, url:URL?) {
     
     let result = openPanel.runModal()
     
-    if result == NSFileHandlingPanelOKButton {
+    if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
         guard let fileURL = openPanel.url else {
             return (nil, nil)
         }
@@ -131,7 +131,7 @@ func importCHRFromNESROMFile() -> (grid: CHRGrid?, url:URL?) {
     
     let result = openPanel.runModal()
     
-    if result == NSFileHandlingPanelOKButton {
+    if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
         guard let fileURL = openPanel.url else {
             return (nil, nil)
         }
@@ -198,7 +198,7 @@ func exportCHRToNESROMFile(withCHRGrid aChrGrid:CHRGrid) -> Bool {
     
     let result = openPanel.runModal()
     
-    if result == NSFileHandlingPanelOKButton {
+    if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
         guard let fileURL = openPanel.url else {
             return false
         }

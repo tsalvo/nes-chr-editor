@@ -53,7 +53,7 @@ class EditorWindowController: NSWindowController, WindowControllerProtocol {
     
     fileprivate func updateWindow() {
         
-        if let safeAppDelegate = NSApplication.shared().delegate as? AppDelegate {
+        if let safeAppDelegate = NSApplication.shared.delegate as? AppDelegate {
             safeAppDelegate.saveMenuItem.title = (self.fileIsOpen ? "Save" : "Save...")
         }
         
