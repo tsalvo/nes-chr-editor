@@ -27,35 +27,31 @@ class PalettePresetView: NSView {
         if self.isSelected
         {
             NSColor.purple.setFill()
-            NSRectFill(self.bounds)
+            self.bounds.fill()
         }
         
         let xOffset:CGFloat = (1.0 - colorSizeAsPercentageOfFullBounds) * 0.5 * bounds.width
         let yOffset:CGFloat = (1.0 - colorSizeAsPercentageOfFullBounds) * 0.5 * bounds.height
         
         NESPaletteColors[Int(palettePreset.color0) % count].setFill()
-        NSRectFill(
-            CGRect(x: xOffset,
+        CGRect(x: xOffset,
                    y: yOffset,
                    width: blockSize.width,
-                   height: blockSize.height))
+                   height: blockSize.height).fill()
         NESPaletteColors[Int(palettePreset.color1) % count].setFill()
-        NSRectFill(
-            CGRect(x: xOffset,
+        CGRect(x: xOffset,
                    y: yOffset + blockSize.height,
                    width: blockSize.width,
-                   height: blockSize.height))
+                   height: blockSize.height).fill()
         NESPaletteColors[Int(palettePreset.color2) % count].setFill()
-        NSRectFill(
-            CGRect(x: xOffset,
+        CGRect(x: xOffset,
                    y: yOffset + blockSize.height * 2,
                    width: blockSize.width,
-                   height: blockSize.height))
+                   height: blockSize.height).fill()
         NESPaletteColors[Int(palettePreset.color3) % count].setFill()
-        NSRectFill(
-            CGRect(x: xOffset,
+        CGRect(x: xOffset,
                    y: yOffset + blockSize.height * 3,
                    width: blockSize.width,
-                   height: blockSize.height))
+                   height: blockSize.height).fill()
     }
 }

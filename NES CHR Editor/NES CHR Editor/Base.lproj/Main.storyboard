@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -227,6 +227,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="Vd3-nf-cLb"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -338,7 +341,7 @@
                                     <constraint firstItem="ycF-Vg-c6h" firstAttribute="leading" secondItem="mtc-3K-6lt" secondAttribute="leading" id="ufe-60-loA"/>
                                 </constraints>
                             </customView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5iD-pS-Nc8">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5iD-pS-Nc8">
                                 <rect key="frame" x="351" y="286" width="96" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Palette Presets" id="ki4-pg-qiQ">
                                     <font key="font" metaFont="system"/>
@@ -355,7 +358,7 @@
                                     <segue destination="ngJ-UK-eBT" kind="embed" id="RWJ-Z4-bC6"/>
                                 </connections>
                             </containerView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pWX-c8-EUH">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pWX-c8-EUH">
                                 <rect key="frame" x="351" y="201" width="73" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NES Colors" id="EkD-iC-z3T">
                                     <font key="font" metaFont="system"/>
@@ -384,6 +387,7 @@
                             <constraint firstItem="zAz-4I-8wR" firstAttribute="leading" secondItem="6Nm-ug-xGm" secondAttribute="leading" id="KJp-x7-D4d"/>
                             <constraint firstItem="zAz-4I-8wR" firstAttribute="trailing" secondItem="6Nm-ug-xGm" secondAttribute="trailing" id="LPi-t9-87K"/>
                             <constraint firstItem="Z37-92-vyl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="MQ7-oO-eFr"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5iD-pS-Nc8" secondAttribute="trailing" id="Mak-Mu-ZL1"/>
                             <constraint firstItem="mtc-3K-6lt" firstAttribute="trailing" secondItem="6Nm-ug-xGm" secondAttribute="trailing" id="NAc-VA-bLo"/>
                             <constraint firstItem="zAz-4I-8wR" firstAttribute="top" secondItem="pWX-c8-EUH" secondAttribute="bottom" id="QGT-m3-U3P"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zAz-4I-8wR" secondAttribute="bottom" constant="10" id="WTC-ze-X9d"/>
@@ -393,6 +397,7 @@
                             <constraint firstItem="pWX-c8-EUH" firstAttribute="leading" secondItem="zAz-4I-8wR" secondAttribute="leading" id="l9k-YR-4EW"/>
                             <constraint firstItem="sWB-kj-iRJ" firstAttribute="top" secondItem="mtc-3K-6lt" secondAttribute="bottom" constant="30" id="m4d-1p-3CH"/>
                             <constraint firstItem="zAz-4I-8wR" firstAttribute="top" secondItem="sWB-kj-iRJ" secondAttribute="bottom" constant="30" id="no5-bs-kSu"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pWX-c8-EUH" secondAttribute="trailing" id="riu-PL-YS8"/>
                             <constraint firstItem="Z37-92-vyl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="upB-wH-UKS"/>
                         </constraints>
                     </view>
@@ -438,7 +443,7 @@
                                     <subviews>
                                         <collectionView selectable="YES" id="S7c-ax-ke1">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="111"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="skC-JJ-dsN">
                                                 <size key="itemSize" width="50" height="50"/>
                                             </collectionViewFlowLayout>
@@ -488,7 +493,7 @@
                                     <subviews>
                                         <collectionView selectable="YES" id="uUH-uD-xrt">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="hoK-bg-7kv">
                                                 <size key="itemSize" width="50" height="50"/>
                                             </collectionViewFlowLayout>
@@ -508,10 +513,10 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="EvU-XO-giP" firstAttribute="leading" secondItem="G5o-jm-on6" secondAttribute="leading" id="0lL-ai-MGm"/>
-                            <constraint firstItem="EvU-XO-giP" firstAttribute="top" secondItem="G5o-jm-on6" secondAttribute="top" id="5QS-cX-Lva"/>
-                            <constraint firstAttribute="trailing" secondItem="EvU-XO-giP" secondAttribute="trailing" id="gNh-o3-xeo"/>
-                            <constraint firstAttribute="bottom" secondItem="EvU-XO-giP" secondAttribute="bottom" id="q0r-Yu-Zrh"/>
+                            <constraint firstAttribute="trailing" secondItem="EvU-XO-giP" secondAttribute="trailing" id="9d9-gU-AwO"/>
+                            <constraint firstItem="EvU-XO-giP" firstAttribute="leading" secondItem="G5o-jm-on6" secondAttribute="leading" id="Iyp-NI-Jne"/>
+                            <constraint firstItem="EvU-XO-giP" firstAttribute="top" secondItem="G5o-jm-on6" secondAttribute="top" id="jCn-xp-5sp"/>
+                            <constraint firstAttribute="bottom" secondItem="EvU-XO-giP" secondAttribute="bottom" id="nKT-ng-HtR"/>
                         </constraints>
                     </view>
                     <connections>
@@ -538,7 +543,7 @@
                                     <subviews>
                                         <collectionView selectable="YES" allowsEmptySelection="NO" id="t7O-he-br6">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" id="tqb-Xb-vRk">
                                                 <size key="itemSize" width="50" height="50"/>
                                             </collectionViewFlowLayout>

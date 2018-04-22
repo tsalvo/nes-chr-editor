@@ -25,7 +25,7 @@ class GridItemView: NSView {
         let bgColor = self.isSelected ? NESPaletteColors[Int(indexedPaletteSet.colorForSelectedCHR)] : PaletteColor.Color0.color
         bgColor.setFill()
         
-        NSRectFill(bounds)
+        bounds.fill()
         
         let blockSize = CGSize(width: bounds.size.width / CGFloat(kCHRWidthInPixels), height: bounds.size.height / CGFloat(kCHRHeightInPixels))
         
@@ -35,13 +35,10 @@ class GridItemView: NSView {
                 
                 if currentPaletteColor != .Color0 {
                     currentPaletteColor.color.setFill()
-                    NSRectFill(
-                        CGRect(x: CGFloat(chrCol) * blockSize.width,
+                    CGRect(x: CGFloat(chrCol) * blockSize.width,
                                y: CGFloat(kCHRHeightInPixels - chrRow - 1) * blockSize.height,
                                width: blockSize.width,
-                               height: blockSize.height))
-                    
-                    
+                               height: blockSize.height).fill()
                 }
                 
             }

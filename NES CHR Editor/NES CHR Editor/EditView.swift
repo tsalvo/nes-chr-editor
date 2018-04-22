@@ -24,7 +24,7 @@ class EditView: NSView, CHRSelectionProtocol {
         super.draw(dirtyRect)
 
         PaletteColor.Color0.color.setFill()
-        NSRectFill(bounds)
+        bounds.fill()
         
         let blockSize = CGSize(width: bounds.width/CGFloat(kCHRWidthInPixels), height: bounds.height/CGFloat(kCHRHeightInPixels))
         
@@ -36,11 +36,10 @@ class EditView: NSView, CHRSelectionProtocol {
                 if currentPaleteColor != .Color0 {
                     
                     currentPaleteColor.color.setFill()
-                    NSRectFill(
-                        CGRect(x: CGFloat(col) * blockSize.width,
+                    CGRect(x: CGFloat(col) * blockSize.width,
                                y: CGFloat(((kCHRHeightInPixels - 1)) - row) * blockSize.height,
                                width: blockSize.height,
-                               height: blockSize.height))
+                               height: blockSize.height).fill()
                 }
             }
         }

@@ -48,9 +48,14 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
         super.viewWillAppear()
         self.refreshControls()
         if self.shouldShowFileSizeSelectionDialog {
-            self.performSegue(withIdentifier: "presentFileSelectionDialog", sender: self)
+            self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "presentFileSelectionDialog"), sender: self)
             self.shouldShowFileSizeSelectionDialog = false
         }
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.refreshControls()
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -256,8 +261,6 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     // MARK: - Private Methods
     
     fileprivate func refreshControls() {
-        
-        self.fullGridCollectionView?.gridCollectionView.reloadData()
         
         self.palletteView0.layerContentsRedrawPolicy = .onSetNeedsDisplay
         self.palletteView1.layerContentsRedrawPolicy = .onSetNeedsDisplay
