@@ -29,7 +29,7 @@ class FileSizeDialogViewController: NSViewController {
         
         for size in SupportedFileSize.allValues {
             let sizeRadioButton = NSButton(radioButtonWithTitle: "\(size.friendlyName)  (\(size.numCHRsInFile) CHRs)", target: self, action: #selector(radiobuttonSelected(sender:)))
-            if size == .Size8KB { sizeRadioButton.state = NSOnState }
+            if size == .Size8KB { sizeRadioButton.state = NSControl.StateValue.on }
             stackView.addArrangedSubview(sizeRadioButton)
         }
         
@@ -52,7 +52,7 @@ class FileSizeDialogViewController: NSViewController {
             ])
     }
     
-    func radiobuttonSelected(sender:NSButton) {
+    @objc func radiobuttonSelected(sender:NSButton) {
         print("selected")
         self.fileSize = SupportedFileSize.allValues.filter({ sender.title.contains($0.friendlyName) }).first ?? .Size8KB
     }

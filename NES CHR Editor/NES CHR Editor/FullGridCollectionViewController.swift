@@ -10,7 +10,7 @@ import AppKit
 
 class FullGridCollectionViewController: NSViewController, NSCollectionViewDelegateFlowLayout, NSCollectionViewDataSource, CHREditProtocol, CHRGridHistoryProtocol {
 
-    @IBOutlet weak var gridCollectionView:NSCollectionView!
+    @IBOutlet weak private var gridCollectionView:NSCollectionView!
     
     var CHRGridHistory:[CHRGrid] = []    // for tracking undo operations, most recent = beginning
     var CHRGridFuture:[CHRGrid] = []    // for tracking redo operations
@@ -26,10 +26,11 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.gridCollectionView.allowsMultipleSelection = false
+        self.gridCollectionView.allowsEmptySelection = false
+        self.gridCollectionView.register(GridCollectionViewItem.self, forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "gridCollectionItem"))
         self.gridCollectionView.delegate = self
         self.gridCollectionView.dataSource = self
-        
-        self.gridCollectionView.register(GridCollectionViewItem.self, forItemWithIdentifier: "gridCollectionItem")
     }
     
     override func viewWillLayout() {
@@ -43,9 +44,9 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
         
         let possibleNumbersOfItemsPerRow:[CGFloat] = [32, 16, 8, 4, 2]
         
-        let minimumItemWidth:CGFloat = 50
-        
         let collectionViewWidth = collectionView.bounds.width
+        
+        let minimumItemWidth:CGFloat = min(collectionViewWidth, 50)
         
         var itemWidth:CGFloat = collectionViewWidth  // default
         
@@ -67,6 +68,18 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
         return 0
     }
     
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, insetForSectionAt section: Int) -> NSEdgeInsets {
+        return NSEdgeInsetsZero
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
+        return NSSize.zero
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForFooterInSection section: Int) -> NSSize {
+        return NSSize.zero
+    }
+    
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         
         if let safeFirstIndexPath = indexPaths.first {
@@ -85,7 +98,7 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         // Recycle or create an item.
-        guard let item = collectionView.makeItem(withIdentifier: "gridCollectionItem", for: indexPath) as? GridCollectionViewItem else { return NSCollectionViewItem() }
+        guard let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "gridCollectionItem"), for: indexPath) as? GridCollectionViewItem else { return NSCollectionViewItem() }
         
         item.itemView.chr = self.grid.getCHR(atIndex: UInt(indexPath.item))
         item.itemView.isSelected = UInt(indexPath.item) == self.grid.selectedCHRIndex
