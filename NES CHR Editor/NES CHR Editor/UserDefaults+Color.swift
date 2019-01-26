@@ -13,7 +13,15 @@ extension UserDefaults {
     func color(forKey key: String) -> NSColor? {
         var color: NSColor?
         if let colorData = data(forKey: key) {
-            color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? NSColor
+            do
+            {
+                color = try NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSColor.self], from: colorData) as? NSColor
+            }
+            catch
+            {
+                
+            }
+            
         }
         return color
     }
@@ -21,7 +29,15 @@ extension UserDefaults {
     func set(color aColor:NSColor?, forKey key: String) {
         var colorData: Data?
         if let color = aColor {
-            colorData = NSKeyedArchiver.archivedData(withRootObject: color)
+            do
+            {
+                colorData = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
+                
+            }
+            catch
+            {
+                
+            }
         }
         set(colorData, forKey: key)
     }

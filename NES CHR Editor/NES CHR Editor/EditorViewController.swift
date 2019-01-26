@@ -28,7 +28,7 @@ protocol FileEditProtocol {
     func fileWasEdited()
 }
 
-class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectionProtocol, PaletteColorSelectionProtocol, PalettePresetSelectionProtocol {
+class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectionProtocol, PaletteColorSelectionProtocol, PalettePresetSelectionProtocol, NSWindowDelegate{
 
     var fullGridCollectionView:FullGridCollectionViewController?
     @IBOutlet weak var editView:EditView!
@@ -46,9 +46,10 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     
     override func viewWillAppear() {
         super.viewWillAppear()
+        self.view.window?.delegate = self
         self.refreshControls()
         if self.shouldShowFileSizeSelectionDialog {
-            self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "presentFileSelectionDialog"), sender: self)
+            self.performSegue(withIdentifier: "presentFileSelectionDialog", sender: self)
             self.shouldShowFileSizeSelectionDialog = false
         }
     }
@@ -301,6 +302,12 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
         self.palletteView1.setNeedsDisplay(self.palletteView1.bounds)
         self.palletteView2.setNeedsDisplay(self.palletteView2.bounds)
         self.palletteView3.setNeedsDisplay(self.palletteView3.bounds)
+    }
+    
+    // MARK: - NSWindowDelegate
+    
+    func windowDidResize(_ notification: Notification) {
+        self.fullGridCollectionView?.updateViewConstraints()
     }
 }
 
