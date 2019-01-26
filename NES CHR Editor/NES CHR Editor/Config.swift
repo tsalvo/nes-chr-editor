@@ -35,5 +35,5 @@ public enum SupportedFileSize:UInt {
     
     var sizeinPixels:(width: UInt, height:UInt) { return (UInt(kCHRWidthInPixels) * self.numCHRCols, UInt(kCHRHeightInPixels) * self.numCHRRows) }
     
-    static let allValues:[SupportedFileSize] = [.Size8KB, .Size16KB, .Size32KB, .Size64KB, .Size128KB, .Size256KB, .Size512KB, .Size1024KB]
+    static let allValues:[SupportedFileSize] = [.Size8KB, .Size16KB, .Size32KB, .Size64KB]
 }

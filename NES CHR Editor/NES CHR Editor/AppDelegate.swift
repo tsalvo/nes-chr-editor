@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if let safeGrid = resultsOfOpenOperation.grid, let safeURL = resultsOfOpenOperation.url {
             
-            if let safeEditorWC = NSStoryboard.init(name: NSStoryboard.Name(rawValue: "Main"), bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
+            if let safeEditorWC = NSStoryboard.init(name: "Main", bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
                 let safeEditorVC = safeEditorWC.contentViewController as? EditorViewController {
                 
                 safeEditorVC.fullGridCollectionView?.grid = safeGrid
@@ -58,7 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func newWindowMenuItemSelected(sender:NSMenuItem) {
         Swift.print("New - Menu - AppDelegate")
-        if let safeEditorWC = NSStoryboard.init(name: NSStoryboard.Name(rawValue: "Main"), bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
+        if let safeEditorWC = NSStoryboard.init(name: "Main", bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
             let safeEditorVC = safeEditorWC.contentViewController as? EditorViewController {
             safeEditorVC.shouldShowFileSizeSelectionDialog = true
             safeEditorWC.showWindow(sender)
@@ -68,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func openMenuItemSelected(sender:NSMenuItem) {
         Swift.print("Open - Menu - AppDelegate")
         
-        if let safeEditorWC = NSStoryboard.init(name: NSStoryboard.Name(rawValue: "Main"), bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
+        if let safeEditorWC = NSStoryboard.init(name: "Main", bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
             let safeEditorVC = safeEditorWC.contentViewController as? EditorViewController {
             safeEditorWC.showWindow(sender)
             safeEditorVC.openFile()
@@ -78,7 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func importFromNESROMMenuItemSelected(sender:NSMenuItem) {
         Swift.print("Open - Menu - AppDelegate")
         
-        if let safeEditorWC = NSStoryboard.init(name: NSStoryboard.Name(rawValue: "Main"), bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
+        if let safeEditorWC = NSStoryboard.init(name: "Main", bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
             let safeEditorVC = safeEditorWC.contentViewController as? EditorViewController {
             safeEditorWC.showWindow(sender)
             safeEditorVC.importFromNESROMFile()

@@ -33,8 +33,8 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
         self.gridCollectionView.dataSource = self
     }
     
-    override func viewWillLayout() {
-        super.viewWillLayout()
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
         self.gridCollectionView.collectionViewLayout?.invalidateLayout()
     }
     
@@ -56,7 +56,7 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
                 break
             }
         }
-        
+        print("TEST: \(itemWidth)")
         return NSSize(width: itemWidth, height: itemWidth)
     }
     
