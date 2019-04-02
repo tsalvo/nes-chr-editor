@@ -176,7 +176,7 @@ public struct CHR {
             }
         }
         
-        return Data(bytes: bytes)
+        return Data(bytes)
     }
     
     init() { }
@@ -188,9 +188,8 @@ public struct CHR {
             
             var bits:[Bool] = [Bool](repeating:false, count: kCHRWidthInPixels * kCHRHeightInPixels * 2)  // 2 bits per CHR pixel
             
-            let byteArray:[UInt8] = aData.withUnsafeBytes {
-                [UInt8](UnsafeBufferPointer(start: $0, count: aData.count))
-            }
+            var byteArray: [UInt8] = [UInt8](repeating: 0, count: kCHRSizeInBytes)
+            aData.copyBytes(to: &byteArray, count: kCHRSizeInBytes)
             
             for (byteIndex, byte) in byteArray.enumerated() {
                 for i:UInt8 in 0..<8 {

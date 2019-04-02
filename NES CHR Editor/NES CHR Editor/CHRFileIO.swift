@@ -147,7 +147,8 @@ func importCHRFromNESROMFile() -> (grid: CHRGrid?, url:URL?) {
             }
             
             // get the first 16 bytes into an array of bytes
-            let romHeaderByteArray:[UInt8] = data.withUnsafeBytes { [UInt8](UnsafeBufferPointer(start: $0, count: 16)) }
+            var romHeaderByteArray: [UInt8] = [UInt8](repeating: 0, count: 16)
+            data.copyBytes(to: &romHeaderByteArray, count: 16)
             
             // double-check that we've gotten 16 bytes, or return otherwise
             if (romHeaderByteArray.count != 16) {
@@ -214,7 +215,8 @@ func exportCHRToNESROMFile(withCHRGrid aChrGrid:CHRGrid) -> Bool {
             }
             
             // get the first 16 bytes into an array of bytes
-            let romHeaderByteArray:[UInt8] = data.withUnsafeBytes { [UInt8](UnsafeBufferPointer(start: $0, count: 16)) }
+            var romHeaderByteArray: [UInt8] = [UInt8](repeating: 0, count: 16)
+            data.copyBytes(to: &romHeaderByteArray, count: 16)
             
             // double-check that we've gotten 16 bytes, or return otherwise
             if (romHeaderByteArray.count != 16) {
