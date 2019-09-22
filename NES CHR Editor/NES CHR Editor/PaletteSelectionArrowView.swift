@@ -15,7 +15,7 @@ class PaletteSelectionArrowView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         
-        var points:[CGPoint] = isUp ?
+        let points:[CGPoint] = isUp ?
             [CGPoint(x: NSMidX(self.bounds), y: self.bounds.height - 1),
              CGPoint(x: 1, y: 1),
              CGPoint(x: self.bounds.width - 1, y: 1)]
