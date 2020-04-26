@@ -56,7 +56,7 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
                 break
             }
         }
-        print("TEST: \(itemWidth)")
+
         return NSSize(width: itemWidth, height: itemWidth)
     }
     
