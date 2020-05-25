@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		990023EE247B889E004ACC8E /* UInt8+ByteUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990023ED247B889E004ACC8E /* UInt8+ByteUtils.swift */; };
 		EB7534011DCE8D510048DAD4 /* FullGridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7534001DCE8D510048DAD4 /* FullGridCollectionViewController.swift */; };
 		EB7534091DCEDE8C0048DAD4 /* GridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7534081DCEDE8C0048DAD4 /* GridItemView.swift */; };
 		EB75340E1DCEEC150048DAD4 /* GridCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB75340C1DCEEC150048DAD4 /* GridCollectionViewItem.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		990023ED247B889E004ACC8E /* UInt8+ByteUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8+ByteUtils.swift"; sourceTree = "<group>"; };
 		EB1CB6B71DAB3590006ACA43 /* NES CHR Editor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NES CHR Editor.entitlements"; sourceTree = "<group>"; };
 		EB7534001DCE8D510048DAD4 /* FullGridCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullGridCollectionViewController.swift; sourceTree = "<group>"; };
 		EB7534081DCEDE8C0048DAD4 /* GridItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridItemView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				EB86D24D1D8F92060037E366 /* Config.swift */,
 				EBC5C8E51D9F551800AEB5EA /* CHRFileIO.swift */,
 				EBC5C8E71D9F561300AEB5EA /* Data.swift */,
+				990023ED247B889E004ACC8E /* UInt8+ByteUtils.swift */,
 				EBD6CB9F1DB31AB700E8F39A /* UserDefaults+Color.swift */,
 				EBAA50481DA3492700F601AD /* WindowControllers */,
 				EB86D2501D8FAC050037E366 /* ViewControllers */,
@@ -253,6 +256,7 @@
 				EBCB0D7B1DD996B5002F1A1B /* PalettePresetsCollectionViewController.swift in Sources */,
 				EB86D24E1D8F92060037E366 /* Config.swift in Sources */,
 				EBCB13D51DBDC41100F74FEA /* FileSizeDialogViewController.swift in Sources */,
+				990023EE247B889E004ACC8E /* UInt8+ByteUtils.swift in Sources */,
 				EBD6CBA21DB333BF00E8F39A /* PaletteSelectionArrowView.swift in Sources */,
 				EBAA50471DA347F600F601AD /* EditorWindowController.swift in Sources */,
 				EB86D23B1D8F69A60037E366 /* AppDelegate.swift in Sources */,
