@@ -18,7 +18,11 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
     var tileSelectionDelegate:CHRSelectionProtocol?
     var fileEditDelegate:FileEditProtocol?
     
-    var grid:CHRGrid = CHRGrid()
+    var grid:CHRGrid = CHRGrid() {
+        didSet {
+            self.gridCollectionView.reloadData()
+        }
+    }
     
     var CHRClipboard:CHR?
     
@@ -31,6 +35,11 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
         self.gridCollectionView.register(GridCollectionViewItem.self, forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "gridCollectionItem"))
         self.gridCollectionView.delegate = self
         self.gridCollectionView.dataSource = self
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.gridCollectionView.reloadData()
     }
     
     override func updateViewConstraints() {
@@ -56,7 +65,7 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
                 break
             }
         }
-        print("TEST: \(itemWidth)")
+
         return NSSize(width: itemWidth, height: itemWidth)
     }
     

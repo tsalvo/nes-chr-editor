@@ -26,6 +26,37 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, toURL aURL:URL) {
     }
 }
 
+func saveAsm6File(withCHRGrid aChrGrid:CHRGrid) -> URL? {
+    let savePanel = NSSavePanel()
+    savePanel.nameFieldStringValue = "untitled" + ".s"
+    
+    let result = savePanel.runModal()
+    
+    if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
+        
+        guard let fileURL = savePanel.url else { return nil }
+        
+        let fileText = aChrGrid.toAsm6Text()
+        
+        guard let fileData = fileText.data(using: .utf8) else { return nil }
+        
+        // write to file
+        do {
+            try fileData.write(to: fileURL, options: Data.WritingOptions.atomicWrite)
+            return fileURL
+        }
+        catch {
+            // error handling here
+            Swift.print("Error saving to file. \(error.localizedDescription)")
+            return nil
+        }
+        
+    } else {
+        Swift.print("File was not saved (User canceled Save)")
+        return nil
+    }
+}
+
 func saveCHRFile(withCHRGrid aChrGrid:CHRGrid) -> URL? {
     
     let savePanel = NSSavePanel()

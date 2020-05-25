@@ -94,6 +94,17 @@ public struct CHRGrid {
     
     var selectedCHRIndex:UInt = 0
     
+    func toAsm6Text() -> String {
+        var retValue = ""
+        
+        for (index, chr) in grid.enumerated() {
+            retValue.append("; \(index)\n")
+            retValue.append(chr.toAsm6String())
+        }
+        
+        return retValue
+    }
+    
     func toData() -> Data {
         var retValue = Data()
         for chr in grid {
@@ -141,8 +152,7 @@ public struct CHR {
         pixels[kCHRWidthInPixels * aRow + aCol] = palleteColor
     }
     
-    func toData() -> Data {
-    
+    func toBytes() -> [UInt8] {
         /* How a single CHR is represented:
         - Each CHR is 128 bits (16 bytes)
         - Each CHR is 8x8 pixels
@@ -166,17 +176,41 @@ public struct CHR {
             }
         }
         
-        // create array of bytes to be put into Data object
+        // create array of bytes from the bits array
         var bytes = [UInt8](repeating : 0, count : (bits.count + 7) / 8)
         
-        // populate the bytes array from the bits array
+        // populate the bytes array
         for (index, bit) in bits.enumerated() {
             if bit == true {
                 bytes[index / 8] += (1 << (7 - UInt8(index) % 8))
             }
         }
         
-        return Data(bytes)
+        return bytes
+    }
+    
+    func toData() -> Data {
+        
+        return Data(self.toBytes())
+    }
+    
+    func toAsm6String() -> String {
+        var retValue: String = ""
+        for (i, b) in self.toBytes().enumerated() {
+            if i % 8 == 0 {
+                retValue.append(".byte ")
+            }
+            
+            retValue.append(b.hexString)
+            
+            if i % 8 == 7 {
+                retValue.append("\n")
+            } else {
+                retValue.append(",")
+            }
+        }
+        
+        return retValue
     }
     
     init() { }
