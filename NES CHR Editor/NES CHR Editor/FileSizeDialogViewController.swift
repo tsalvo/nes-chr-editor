@@ -53,7 +53,6 @@ class FileSizeDialogViewController: NSViewController {
     }
     
     @objc func radiobuttonSelected(sender:NSButton) {
-        print("selected")
         self.fileSize = SupportedFileSize.allValues.filter({ sender.title.contains($0.friendlyName) }).first ?? .Size8KB
     }
     

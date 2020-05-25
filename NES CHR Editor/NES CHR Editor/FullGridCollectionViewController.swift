@@ -37,11 +37,6 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
         self.gridCollectionView.dataSource = self
     }
     
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        self.gridCollectionView.reloadData()
-    }
-    
     override func updateViewConstraints() {
         super.updateViewConstraints()
         self.gridCollectionView.collectionViewLayout?.invalidateLayout()

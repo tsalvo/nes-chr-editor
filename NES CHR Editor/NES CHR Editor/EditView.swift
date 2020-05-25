@@ -82,8 +82,6 @@ class EditView: NSView, CHRSelectionProtocol {
                                         height: blockSize.height))
             self.tileEditDelegate?.tileEdited(withCHR: self.chr)
         }
-        
-        Swift.print("Painted CHR Row: \(row), Col: \(col)")
     }
     
     override func mouseDown(with event: NSEvent) {
@@ -91,7 +89,6 @@ class EditView: NSView, CHRSelectionProtocol {
     }
     
     override func mouseUp(with event: NSEvent) {
-        Swift.print("mouse up")
         self.didStartEditing = false
     }
     
