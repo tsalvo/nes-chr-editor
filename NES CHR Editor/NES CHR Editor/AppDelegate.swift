@@ -92,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    fileprivate func validateUserDefaults() {
+    private func validateUserDefaults() {
         let selectedPaletteSet = UserDefaults.standard.integer(forKey: "PaletteSet")
         if selectedPaletteSet < 0 {
             UserDefaults.standard.set(0, forKey: "PaletteSet")

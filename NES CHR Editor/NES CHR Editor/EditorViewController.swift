@@ -268,7 +268,7 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     
     // MARK: - Private Methods
     
-    fileprivate func refreshControls() {
+    private func refreshControls() {
         
         self.palletteView0.layerContentsRedrawPolicy = .onSetNeedsDisplay
         self.palletteView1.layerContentsRedrawPolicy = .onSetNeedsDisplay

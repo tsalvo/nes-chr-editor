@@ -8,7 +8,7 @@
 
 import Foundation
 
-fileprivate let kBitsPerPixel = 2
+private let kBitsPerPixel = 2
 
 let kCHRWidthInPixels:Int = 8
 let kCHRHeightInPixels:Int = 8
