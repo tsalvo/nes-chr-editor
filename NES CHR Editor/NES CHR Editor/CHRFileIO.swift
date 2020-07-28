@@ -19,11 +19,14 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, toURL aURL:URL) {
             try fileData.write(to: aURL, options: Data.WritingOptions.atomicWrite)
         }
         catch {
-            // error handling here
-            Swift.print("Error saving to file. \(error.localizedDescription)")
+            let alert: NSAlert = NSAlert(error: error)
+            alert.messageText = "Error saving to CHR file. \(error.localizedDescription)"
+            alert.runModal()
         }
     } else {
-        Swift.print("Error saving to file.  The number of bytes to be saved (\(fileData.count) ) does not match the expected value of \(chrFileSize.fileSizeInBytes)")
+        let alert: NSAlert = NSAlert()
+        alert.messageText = "Error saving to file.  The number of bytes to be saved (\(fileData.count) ) does not match the expected value of \(chrFileSize.fileSizeInBytes)"
+        alert.runModal()
     }
 }
 
@@ -47,8 +50,9 @@ func saveAsm6File(withCHRGrid aChrGrid:CHRGrid) -> URL? {
             return fileURL
         }
         catch {
-            // error handling here
-            Swift.print("Error saving to file. \(error.localizedDescription)")
+            let alert: NSAlert = NSAlert(error: error)
+            alert.messageText = "Error saving to file. \(error.localizedDescription)"
+            alert.runModal()
             return nil
         }
         
@@ -80,12 +84,15 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid) -> URL? {
                 return fileURL
             }
             catch {
-                // error handling here
-                Swift.print("Error saving to file. \(error.localizedDescription)")
+                let alert: NSAlert = NSAlert(error: error)
+                alert.messageText = "Error saving to file. \(error.localizedDescription)"
+                alert.runModal()
                 return nil
             }
         } else {
-            Swift.print("Error saving to file.  The number of bytes to be saved (\(fileData.count) ) does not match the expected value of \(chrFileSize.fileSizeInBytes)")
+            let alert: NSAlert = NSAlert()
+            alert.messageText = "Error saving to file.  The number of bytes to be saved (\(fileData.count) ) does not match the expected value of \(chrFileSize.fileSizeInBytes)"
+            alert.runModal()
             return nil
         }
     } else {
@@ -116,7 +123,9 @@ func openCHRFile() -> (grid: CHRGrid?, url:URL?) {
             if data.count >= ChrFileSize(numChrBlocks: 1).fileSizeInBytes {
                 return (CHRGrid(fromData: data), fileURL)
             } else {
-                Swift.print("Error opening file.  The number of bytes in the file (\(data.count)) does not match an expected value")
+                let alert: NSAlert = NSAlert()
+                alert.messageText = "Error opening CHR file.  The number of bytes in the file (\(data.count)) does not match an expected value"
+                alert.runModal()
                 return (nil, nil)
             }
         }
@@ -143,7 +152,9 @@ func openCHRFile(withFileName aFileName:String) -> (grid: CHRGrid?, url:URL?) {
         if data.count >= ChrFileSize(numChrBlocks: 1).fileSizeInBytes {
             return (CHRGrid(fromData: data), fileURL)
         } else {
-            Swift.print("Error opening file.  The number of bytes in the file (\(data.count)) does not match an expected value")
+            let alert: NSAlert = NSAlert()
+            alert.messageText = "Error opening CHR file.  The number of bytes in the file (\(data.count)) does not match an expected value"
+            alert.runModal()
             return (nil, nil)
         }
     }
@@ -176,7 +187,10 @@ func importCHRFromNESROMFile() -> (grid: CHRGrid?, url:URL?) {
             
             let cartridge = Cartridge(fromData: data)
             
-            guard cartridge.isValid else {Swift.print("NES ROM: ROM appears to be invalid")
+            guard cartridge.isValid else {
+                let alert: NSAlert = NSAlert()
+                alert.messageText = "The NES ROM appears to be invalid"
+                alert.runModal()
                 return (nil, nil)
             }
             
@@ -186,10 +200,13 @@ func importCHRFromNESROMFile() -> (grid: CHRGrid?, url:URL?) {
                 chrData.append(contentsOf: b)
             }
             
-            if chrData.count >= ChrFileSize(numChrBlocks: 1).fileSizeInBytes {
+            if cartridge.header.numChrBlocks > 0,
+                chrData.count >= ChrFileSize(numChrBlocks: 1).fileSizeInBytes {
                 return (CHRGrid(fromData: chrData), nil)
             } else {
-                Swift.print("Error opening CHR from NES file.  The number of bytes in the file (\(data.count)) does not match an expected value")
+                let alert: NSAlert = NSAlert()
+                alert.messageText = "Error opening CHR from NES ROM. The ROM header specifies that there are 0 CHR blocks, so tile data is defined programmatically."
+                alert.runModal()
                 return (nil, nil)
             }
         }
@@ -228,7 +245,9 @@ func exportCHRToNESROMFile(withCHRGrid aChrGrid:CHRGrid) -> Bool {
             }
             
             guard cartridge.chrBlocks.count == aChrGrid.numChrBlocks else {
-                Swift.print("NES ROM: The CHR Grid size (\(aChrGrid.numChrBlocks) blocks) does not match the number of CHR blocks specified in the ROM header (\(cartridge.chrBlocks.count))")
+                let alert: NSAlert = NSAlert()
+                alert.messageText = "NES ROM: The CHR Grid size (\(aChrGrid.numChrBlocks) blocks) does not match the number of CHR blocks specified in the ROM header (\(cartridge.chrBlocks.count))"
+                alert.runModal()
                 return false
             }
             
@@ -251,8 +270,9 @@ func exportCHRToNESROMFile(withCHRGrid aChrGrid:CHRGrid) -> Bool {
                 return true
             }
             catch {
-                // error handling here
-                Swift.print("Error saving to file. \(error.localizedDescription)")
+                let alert: NSAlert = NSAlert(error: error)
+                alert.messageText = "Error saving to file. \(error.localizedDescription)"
+                alert.runModal()
                 return false
             }
                 
