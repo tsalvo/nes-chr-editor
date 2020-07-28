@@ -25,14 +25,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
         UserDefaults.standard.synchronize()
     }
-    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        if (!flag) {
-            let windowController = NSStoryboard(name: "Main", bundle: nil)
-                .instantiateController(withIdentifier: "EditorWindowControllerIdentifier") as! EditorWindowController;
-            windowController.showWindow(self);
-        }
-        return true;
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows aHasVisibileWindows: Bool) -> Bool {
+        
+        guard !aHasVisibileWindows else { return true }
+        let windowController: EditorWindowController? = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "EditorWindowControllerIdentifier") as? EditorWindowController
+        windowController?.showWindow(self)
+        return true
     }
+    
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
         
         // TODO: - tsalvo - Test This
