@@ -36,8 +36,8 @@ struct Cartridge {
         
         let expectedFileSizeOfEntireRomInBytes: Int = headerSize + trainerSize + totalPrgSize + totalChrSize
         
-        // make sure the the total file size adds up to what the header indicates
-        guard expectedFileSizeOfEntireRomInBytes == aData.count
+        // make sure the the total file size is at least what the header indicates.  any traling data is ignored
+        guard aData.count >= expectedFileSizeOfEntireRomInBytes
             else
         {
             self.chrBlocks = []
