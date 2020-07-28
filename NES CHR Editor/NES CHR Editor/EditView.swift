@@ -70,7 +70,6 @@ class EditView: NSView, CHRSelectionProtocol {
             
             // a new edit has begun
             if !self.didStartEditing {
-                Swift.print("new edit")
                 self.gridHistoryDelegate?.CHRGridWillChange()
                 self.didStartEditing = true
             }

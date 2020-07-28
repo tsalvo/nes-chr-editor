@@ -11,8 +11,9 @@ import AppKit
 func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, toURL aURL:URL) {
     
     let fileData = aChrGrid.toData()
+    let chrFileSize: ChrFileSize = ChrFileSize(numChrBlocks: aChrGrid.numChrBlocks)
     
-    if fileData.count == Int(aChrGrid.fileSize.fileSizeInBytes) {
+    if fileData.count == Int(chrFileSize.fileSizeInBytes) {
         // write to file
         do {
             try fileData.write(to: aURL, options: Data.WritingOptions.atomicWrite)
@@ -22,7 +23,7 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, toURL aURL:URL) {
             Swift.print("Error saving to file. \(error.localizedDescription)")
         }
     } else {
-        Swift.print("Error saving to file.  The number of bytes to be saved (\(fileData.count) ) does not match the expected value of \(aChrGrid.fileSize.fileSizeInBytes)")
+        Swift.print("Error saving to file.  The number of bytes to be saved (\(fileData.count) ) does not match the expected value of \(chrFileSize.fileSizeInBytes)")
     }
 }
 
@@ -62,6 +63,8 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid) -> URL? {
     let savePanel = NSSavePanel()
     savePanel.nameFieldStringValue = "untitled" + ".chr"
     
+    let chrFileSize: ChrFileSize = ChrFileSize(numChrBlocks: aChrGrid.numChrBlocks)
+    
     let result = savePanel.runModal()
     
     if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
@@ -70,7 +73,7 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid) -> URL? {
         
         let fileData = aChrGrid.toData()
         
-        if fileData.count == Int(aChrGrid.fileSize.fileSizeInBytes) {
+        if fileData.count == Int(chrFileSize.fileSizeInBytes) {
             // write to file
             do {
                 try fileData.write(to: fileURL, options: Data.WritingOptions.atomicWrite)
@@ -82,7 +85,7 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid) -> URL? {
                 return nil
             }
         } else {
-            Swift.print("Error saving to file.  The number of bytes to be saved (\(fileData.count) ) does not match the expected value of \(aChrGrid.fileSize.fileSizeInBytes)")
+            Swift.print("Error saving to file.  The number of bytes to be saved (\(fileData.count) ) does not match the expected value of \(chrFileSize.fileSizeInBytes)")
             return nil
         }
     } else {
@@ -110,7 +113,7 @@ func openCHRFile() -> (grid: CHRGrid?, url:URL?) {
         do {
             let data = try Data(contentsOf: fileURL)
             
-            if let _:SupportedFileSize = SupportedFileSize(rawValue: UInt(data.count) / 1024) {
+            if data.count >= ChrFileSize(numChrBlocks: 1).fileSizeInBytes {
                 return (CHRGrid(fromData: data), fileURL)
             } else {
                 Swift.print("Error opening file.  The number of bytes in the file (\(data.count)) does not match an expected value")
@@ -137,7 +140,7 @@ func openCHRFile(withFileName aFileName:String) -> (grid: CHRGrid?, url:URL?) {
     do {
         let data = try Data(contentsOf: fileURL)
         
-        if let _:SupportedFileSize = SupportedFileSize(rawValue: UInt(data.count) / 1024) {
+        if data.count >= ChrFileSize(numChrBlocks: 1).fileSizeInBytes {
             return (CHRGrid(fromData: data), fileURL)
         } else {
             Swift.print("Error opening file.  The number of bytes in the file (\(data.count)) does not match an expected value")
@@ -171,41 +174,19 @@ func importCHRFromNESROMFile() -> (grid: CHRGrid?, url:URL?) {
         do {
             let data = try Data(contentsOf: fileURL)
             
-            // there must be a 16-byte header at the beginning of the ROM file, or return otherwise
-            if (data.count < 16) {
-                Swift.print("NES ROM: Error getting 16 byte header")
+            let cartridge = Cartridge(fromData: data)
+            
+            guard cartridge.isValid else {Swift.print("NES ROM: ROM appears to be invalid")
                 return (nil, nil)
             }
             
-            // get the first 16 bytes into an array of bytes
-            var romHeaderByteArray: [UInt8] = [UInt8](repeating: 0, count: 16)
-            data.copyBytes(to: &romHeaderByteArray, count: 16)
+            var chrData: Data = Data()
             
-            // double-check that we've gotten 16 bytes, or return otherwise
-            if (romHeaderByteArray.count != 16) {
-                Swift.print("NES ROM: Error getting 16 byte header")
-                return (nil, nil)
+            for b in cartridge.chrBlocks {
+                chrData.append(contentsOf: b)
             }
             
-            // offset 4 = num of CHR banks (16384 bytes each)
-            let numPRGBanks:UInt8 = romHeaderByteArray[4]
-            
-            // offset 5 = number of CHR banks (8192 bytes each)
-            let numCHRBanks:UInt8 = romHeaderByteArray[5]
-            
-            let offsetToCHRData:Int = 16 + 16384 * Int(numPRGBanks)
-            let lengthOfCHRData:Int = 8192 * Int(numCHRBanks)
-            
-            if (data.count < offsetToCHRData + lengthOfCHRData) {
-                Swift.print("NES ROM: CHR Data location is out of bounds.  CHR Data starts at byte offset \(offsetToCHRData), with length of \(lengthOfCHRData) bytes, but the length of the file is only \(data.count) bytes")
-                return (nil, nil)
-            }
-            
-            Swift.print("NES ROM: Found \(numPRGBanks) banks of PRG data, \(numCHRBanks) banks of CHR data.  CHR Data starts at byte offset \(offsetToCHRData), with length of \(lengthOfCHRData) bytes")
-            
-            let chrData = data.subdata(in: offsetToCHRData ..< (offsetToCHRData + lengthOfCHRData))
-            
-            if let _:SupportedFileSize = SupportedFileSize(rawValue: UInt(chrData.count) / 1024) {
+            if chrData.count >= ChrFileSize(numChrBlocks: 1).fileSizeInBytes {
                 return (CHRGrid(fromData: chrData), nil)
             } else {
                 Swift.print("Error opening CHR from NES file.  The number of bytes in the file (\(data.count)) does not match an expected value")
@@ -239,70 +220,42 @@ func exportCHRToNESROMFile(withCHRGrid aChrGrid:CHRGrid) -> Bool {
         do {
             let data = try Data(contentsOf: fileURL)
             
-            // there must be a 16-byte header at the beginning of the ROM file, or return otherwise
-            if (data.count < 16) {
-                Swift.print("NES ROM: Error getting 16 byte header")
+            let cartridge = Cartridge(fromData: data)
+            
+            guard cartridge.isValid else {
+                Swift.print("NES ROM: ROM appears to be invalid")
                 return false
             }
             
-            // get the first 16 bytes into an array of bytes
-            var romHeaderByteArray: [UInt8] = [UInt8](repeating: 0, count: 16)
-            data.copyBytes(to: &romHeaderByteArray, count: 16)
-            
-            // double-check that we've gotten 16 bytes, or return otherwise
-            if (romHeaderByteArray.count != 16) {
-                Swift.print("NES ROM: Error getting 16 byte header")
+            guard cartridge.chrBlocks.count == aChrGrid.numChrBlocks else {
+                Swift.print("NES ROM: The CHR Grid size (\(aChrGrid.numChrBlocks) blocks) does not match the number of CHR blocks specified in the ROM header (\(cartridge.chrBlocks.count))")
                 return false
             }
             
-            // offset 4 = num of CHR banks (16384 bytes each)
-            let numPRGBanks:UInt8 = romHeaderByteArray[4]
+            let prgBlockSize: Int = 16384
+            let trainerSize: Int = cartridge.header.hasTrainer ? 512 : 0
+            let totalPrgSize: Int = Int(cartridge.header.numPrgBlocks) * prgBlockSize
+            let trainerOffset: Int = RomHeader.sizeInBytes // trainer (if present) comes after header
+            let prgOffset: Int = trainerOffset + trainerSize // prg blocks come after trainer (if present)
+            let chrOffset: Int = prgOffset + totalPrgSize // chr blocks come after prg blocks
             
-            // offset 5 = number of CHR banks (8192 bytes each)
-            let numCHRBanks:UInt8 = romHeaderByteArray[5]
+            let leadingData: Data = data.subdata(in: 0 ..< chrOffset)
+            let newChrData: Data = aChrGrid.toData()
             
-            let offsetToCHRData:Int = 16 + 16384 * Int(numPRGBanks)
-            let lengthOfCHRData:Int = 8192 * Int(numCHRBanks)
-            
-            if (data.count < offsetToCHRData + lengthOfCHRData) {
-                Swift.print("NES ROM: CHR Data location is out of bounds.  CHR Data starts at byte offset \(offsetToCHRData), with length of \(lengthOfCHRData) bytes, but the length of the file is only \(data.count) bytes")
+            var outputData: Data = Data()
+            outputData.append(leadingData)
+            outputData.append(newChrData)
+    
+            do {
+                try outputData.write(to: fileURL, options: Data.WritingOptions.atomicWrite)
+                return true
+            }
+            catch {
+                // error handling here
+                Swift.print("Error saving to file. \(error.localizedDescription)")
                 return false
             }
-            
-            Swift.print("NES ROM: Found \(numPRGBanks) banks of PRG data, \(numCHRBanks) banks of CHR data.  CHR Data starts at byte offset \(offsetToCHRData), with length of \(lengthOfCHRData) bytes")
-            
-            
-            let headerAndPRGDataFromNESROM = data.subdata(in: 0 ..< offsetToCHRData)
-            let chrDataFromNESROM = data.subdata(in: offsetToCHRData ..< (offsetToCHRData + lengthOfCHRData))
-            let trailingData:Data? = (data.count > offsetToCHRData + lengthOfCHRData) ? data.subdata(in: (offsetToCHRData + lengthOfCHRData) ..< data.count - (offsetToCHRData + lengthOfCHRData)) : nil
-            
-            let chrDataToSave = aChrGrid.toData()
-            
-            if let _:SupportedFileSize = SupportedFileSize(rawValue: UInt(chrDataFromNESROM.count) / 1024), chrDataToSave.count == chrDataFromNESROM.count {
                 
-
-                var dataToSave = Data(count: 0)
-                dataToSave.append(headerAndPRGDataFromNESROM)
-                dataToSave.append(chrDataToSave)
-                
-                if let safeTrailingData = trailingData {
-                    dataToSave.append(safeTrailingData)
-                }
-                
-                do {
-                    try dataToSave.write(to: fileURL, options: Data.WritingOptions.atomicWrite)
-                    return true
-                }
-                catch {
-                    // error handling here
-                    Swift.print("Error saving to file. \(error.localizedDescription)")
-                    return false
-                }
-                
-            } else {
-                Swift.print("Error opening CHR from NES file.  The number of bytes in the file (\(data.count)) does not match an expected value")
-                return false
-            }
         }
         catch {
             return false

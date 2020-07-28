@@ -9,13 +9,14 @@
 import AppKit
 
 protocol FileSizeSelectionProtocol {
-    func fileSizeSelected(_ aSupportedFileSize:SupportedFileSize)
+    func fileSizeSelected(_ aNumChrBlocks: UInt8)
 }
 
 class FileSizeDialogViewController: NSViewController {
 
+    static let supportedNumChrBlocks: [UInt8] = [1, 2, 4, 8, 16, 32, 64]
     
-    var fileSize:SupportedFileSize = .Size8KB
+    var numChrBlocks:UInt8 = 1
     var fileSizeSelectionDelegate:FileSizeSelectionProtocol?
     
     override func viewDidLoad() {
@@ -27,9 +28,12 @@ class FileSizeDialogViewController: NSViewController {
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        for size in SupportedFileSize.allValues {
+        for (index, n) in FileSizeDialogViewController.supportedNumChrBlocks.enumerated() {
+            
+            let size: ChrFileSize = ChrFileSize(numChrBlocks: n)
+            
             let sizeRadioButton = NSButton(radioButtonWithTitle: "\(size.friendlyName)  (\(size.numCHRsInFile) CHRs)", target: self, action: #selector(radiobuttonSelected(sender:)))
-            if size == .Size8KB { sizeRadioButton.state = NSControl.StateValue.on }
+            if index == 0 { sizeRadioButton.state = NSControl.StateValue.on }
             stackView.addArrangedSubview(sizeRadioButton)
         }
         
@@ -53,13 +57,17 @@ class FileSizeDialogViewController: NSViewController {
     }
     
     @objc func radiobuttonSelected(sender:NSButton) {
-        self.fileSize = SupportedFileSize.allValues.filter({ sender.title.contains($0.friendlyName) }).first ?? .Size8KB
+        
+        let selectedNumChrBlocks: UInt8 = FileSizeDialogViewController.supportedNumChrBlocks.filter({
+            sender.title.contains(ChrFileSize.init(numChrBlocks: $0).friendlyName)
+            }).first ?? FileSizeDialogViewController.supportedNumChrBlocks[0]
+        
+        self.numChrBlocks = selectedNumChrBlocks
     }
     
     @IBAction func okButtonSelected(sender:NSButton) {
-        print("File Size - OK - selected file size \(self.fileSize.friendlyName)")
-        self.fileSizeSelectionDelegate?.fileSizeSelected(self.fileSize)
+        print("File Size - OK - selected file size \(ChrFileSize(numChrBlocks: self.numChrBlocks).friendlyName)")
+        self.fileSizeSelectionDelegate?.fileSizeSelected(self.numChrBlocks)
         self.dismiss(self)
     }
-    
 }

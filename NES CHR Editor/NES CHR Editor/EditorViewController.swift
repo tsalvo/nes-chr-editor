@@ -255,8 +255,8 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     
     // MARK: - File Size Selection protocol
     
-    func fileSizeSelected(_ aSupportedFileSize: SupportedFileSize) {
-        self.fullGridCollectionView?.grid = CHRGrid(withFileSize: aSupportedFileSize)
+    func fileSizeSelected(_ aNumChrBlocks: UInt8) {
+        self.fullGridCollectionView?.grid = CHRGrid(withNumChrBlocks: aNumChrBlocks)
         self.refreshControls()
         
         if let safeCHR = self.fullGridCollectionView?.grid.getCHR(atIndex: 0) {

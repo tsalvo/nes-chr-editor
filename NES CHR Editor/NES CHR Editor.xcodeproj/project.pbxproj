@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		990023EE247B889E004ACC8E /* UInt8+ByteUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990023ED247B889E004ACC8E /* UInt8+ByteUtils.swift */; };
+		99E2111A24CFFDF200AE6053 /* Cartridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2111924CFFDF200AE6053 /* Cartridge.swift */; };
+		99E2111C24CFFE0300AE6053 /* RomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2111B24CFFE0300AE6053 /* RomHeader.swift */; };
+		99E2111E24CFFE4400AE6053 /* MirroringMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2111D24CFFE4400AE6053 /* MirroringMode.swift */; };
+		99E2112024CFFE5F00AE6053 /* PaletteSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2111F24CFFE5F00AE6053 /* PaletteSet.swift */; };
+		99E2112224CFFE7C00AE6053 /* CHRGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2112124CFFE7C00AE6053 /* CHRGrid.swift */; };
+		99E2112424CFFE9800AE6053 /* CHR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2112324CFFE9800AE6053 /* CHR.swift */; };
+		99E2112624CFFECD00AE6053 /* IndexedPaletteSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2112524CFFECD00AE6053 /* IndexedPaletteSet.swift */; };
+		99E2112824CFFF0B00AE6053 /* NESPaletteColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2112724CFFF0B00AE6053 /* NESPaletteColors.swift */; };
+		99E2112A24CFFF8500AE6053 /* PaletteColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E2112924CFFF8500AE6053 /* PaletteColor.swift */; };
 		EB7534011DCE8D510048DAD4 /* FullGridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7534001DCE8D510048DAD4 /* FullGridCollectionViewController.swift */; };
 		EB7534091DCEDE8C0048DAD4 /* GridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7534081DCEDE8C0048DAD4 /* GridItemView.swift */; };
 		EB75340E1DCEEC150048DAD4 /* GridCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB75340C1DCEEC150048DAD4 /* GridCollectionViewItem.swift */; };
@@ -20,7 +29,6 @@
 		EB86D24E1D8F92060037E366 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86D24D1D8F92060037E366 /* Config.swift */; };
 		EBAA50471DA347F600F601AD /* EditorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAA50461DA347F600F601AD /* EditorWindowController.swift */; };
 		EBC5C8E61D9F551800AEB5EA /* CHRFileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC5C8E51D9F551800AEB5EA /* CHRFileIO.swift */; };
-		EBC5C8E81D9F561300AEB5EA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC5C8E71D9F561300AEB5EA /* Data.swift */; };
 		EBCB0D751DD95C86002F1A1B /* PaletteColorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB0D741DD95C86002F1A1B /* PaletteColorCollectionViewController.swift */; };
 		EBCB0D781DD963F7002F1A1B /* PaletteCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB0D761DD963F7002F1A1B /* PaletteCollectionViewItem.swift */; };
 		EBCB0D791DD963F7002F1A1B /* PaletteCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBCB0D771DD963F7002F1A1B /* PaletteCollectionViewItem.xib */; };
@@ -35,6 +43,15 @@
 
 /* Begin PBXFileReference section */
 		990023ED247B889E004ACC8E /* UInt8+ByteUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8+ByteUtils.swift"; sourceTree = "<group>"; };
+		99E2111924CFFDF200AE6053 /* Cartridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cartridge.swift; sourceTree = "<group>"; };
+		99E2111B24CFFE0300AE6053 /* RomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomHeader.swift; sourceTree = "<group>"; };
+		99E2111D24CFFE4400AE6053 /* MirroringMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroringMode.swift; sourceTree = "<group>"; };
+		99E2111F24CFFE5F00AE6053 /* PaletteSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteSet.swift; sourceTree = "<group>"; };
+		99E2112124CFFE7C00AE6053 /* CHRGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHRGrid.swift; sourceTree = "<group>"; };
+		99E2112324CFFE9800AE6053 /* CHR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHR.swift; sourceTree = "<group>"; };
+		99E2112524CFFECD00AE6053 /* IndexedPaletteSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexedPaletteSet.swift; sourceTree = "<group>"; };
+		99E2112724CFFF0B00AE6053 /* NESPaletteColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NESPaletteColors.swift; sourceTree = "<group>"; };
+		99E2112924CFFF8500AE6053 /* PaletteColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteColor.swift; sourceTree = "<group>"; };
 		EB1CB6B71DAB3590006ACA43 /* NES CHR Editor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NES CHR Editor.entitlements"; sourceTree = "<group>"; };
 		EB7534001DCE8D510048DAD4 /* FullGridCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullGridCollectionViewController.swift; sourceTree = "<group>"; };
 		EB7534081DCEDE8C0048DAD4 /* GridItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridItemView.swift; sourceTree = "<group>"; };
@@ -50,7 +67,6 @@
 		EB86D24D1D8F92060037E366 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		EBAA50461DA347F600F601AD /* EditorWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorWindowController.swift; sourceTree = "<group>"; };
 		EBC5C8E51D9F551800AEB5EA /* CHRFileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHRFileIO.swift; sourceTree = "<group>"; };
-		EBC5C8E71D9F561300AEB5EA /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		EBCB0D741DD95C86002F1A1B /* PaletteColorCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteColorCollectionViewController.swift; sourceTree = "<group>"; };
 		EBCB0D761DD963F7002F1A1B /* PaletteCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteCollectionViewItem.swift; sourceTree = "<group>"; };
 		EBCB0D771DD963F7002F1A1B /* PaletteCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaletteCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -74,6 +90,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99E2111824CFFDDF00AE6053 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99E2111924CFFDF200AE6053 /* Cartridge.swift */,
+				99E2111B24CFFE0300AE6053 /* RomHeader.swift */,
+				99E2111D24CFFE4400AE6053 /* MirroringMode.swift */,
+				99E2111F24CFFE5F00AE6053 /* PaletteSet.swift */,
+				99E2112124CFFE7C00AE6053 /* CHRGrid.swift */,
+				99E2112324CFFE9800AE6053 /* CHR.swift */,
+				99E2112524CFFECD00AE6053 /* IndexedPaletteSet.swift */,
+				99E2112724CFFF0B00AE6053 /* NESPaletteColors.swift */,
+				99E2112924CFFF8500AE6053 /* PaletteColor.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		EB1CB6B81DAB3CBD006ACA43 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,10 +134,10 @@
 		EB86D2391D8F69A60037E366 /* NES CHR Editor */ = {
 			isa = PBXGroup;
 			children = (
+				99E2111824CFFDDF00AE6053 /* Model */,
 				EB86D23A1D8F69A60037E366 /* AppDelegate.swift */,
 				EB86D24D1D8F92060037E366 /* Config.swift */,
 				EBC5C8E51D9F551800AEB5EA /* CHRFileIO.swift */,
-				EBC5C8E71D9F561300AEB5EA /* Data.swift */,
 				990023ED247B889E004ACC8E /* UInt8+ByteUtils.swift */,
 				EBD6CB9F1DB31AB700E8F39A /* UserDefaults+Color.swift */,
 				EBAA50481DA3492700F601AD /* WindowControllers */,
@@ -244,25 +276,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBC5C8E81D9F561300AEB5EA /* Data.swift in Sources */,
 				EBCB0D7E1DD996DF002F1A1B /* PalettePresetView.swift in Sources */,
 				EBCB0D811DD99791002F1A1B /* PalettePresetCollectionViewItem.swift in Sources */,
 				EB75340E1DCEEC150048DAD4 /* GridCollectionViewItem.swift in Sources */,
 				EB86D24C1D8F8B240037E366 /* EditView.swift in Sources */,
 				EBCB0D751DD95C86002F1A1B /* PaletteColorCollectionViewController.swift in Sources */,
 				EB86D23D1D8F69A60037E366 /* EditorViewController.swift in Sources */,
+				99E2112424CFFE9800AE6053 /* CHR.swift in Sources */,
 				EB7534091DCEDE8C0048DAD4 /* GridItemView.swift in Sources */,
+				99E2111E24CFFE4400AE6053 /* MirroringMode.swift in Sources */,
 				EB7534011DCE8D510048DAD4 /* FullGridCollectionViewController.swift in Sources */,
+				99E2111C24CFFE0300AE6053 /* RomHeader.swift in Sources */,
+				99E2112224CFFE7C00AE6053 /* CHRGrid.swift in Sources */,
 				EBCB0D7B1DD996B5002F1A1B /* PalettePresetsCollectionViewController.swift in Sources */,
+				99E2112624CFFECD00AE6053 /* IndexedPaletteSet.swift in Sources */,
+				99E2112824CFFF0B00AE6053 /* NESPaletteColors.swift in Sources */,
 				EB86D24E1D8F92060037E366 /* Config.swift in Sources */,
 				EBCB13D51DBDC41100F74FEA /* FileSizeDialogViewController.swift in Sources */,
+				99E2112024CFFE5F00AE6053 /* PaletteSet.swift in Sources */,
 				990023EE247B889E004ACC8E /* UInt8+ByteUtils.swift in Sources */,
 				EBD6CBA21DB333BF00E8F39A /* PaletteSelectionArrowView.swift in Sources */,
 				EBAA50471DA347F600F601AD /* EditorWindowController.swift in Sources */,
 				EB86D23B1D8F69A60037E366 /* AppDelegate.swift in Sources */,
+				99E2112A24CFFF8500AE6053 /* PaletteColor.swift in Sources */,
 				EBD6CBA01DB31AB700E8F39A /* UserDefaults+Color.swift in Sources */,
 				EBC5C8E61D9F551800AEB5EA /* CHRFileIO.swift in Sources */,
 				EBCB0D781DD963F7002F1A1B /* PaletteCollectionViewItem.swift in Sources */,
+				99E2111A24CFFDF200AE6053 /* Cartridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

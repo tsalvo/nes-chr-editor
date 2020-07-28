@@ -10,22 +10,24 @@ import Foundation
 
 fileprivate let kBitsPerPixel = 2
 
-public let kCHRWidthInPixels:Int = 8
-public let kCHRHeightInPixels:Int = 8
+let kCHRWidthInPixels:Int = 8
+let kCHRHeightInPixels:Int = 8
 
-public let kMaxCHRGridHistory:UInt = 64
+let kMaxCHRGridHistory:UInt = 64
 
-public let kMaxPaletteSets:UInt = 64
+let kMaxPaletteSets:UInt = 64
 
-public let kCHRSizeInBytes = kCHRWidthInPixels * kCHRHeightInPixels * kBitsPerPixel / 8
+let kCHRSizeInBytes = kCHRWidthInPixels * kCHRHeightInPixels * kBitsPerPixel / 8
 
-public enum SupportedFileSize:UInt {
+struct ChrFileSize
+{
+    let numChrBlocks: UInt8
     
-    case Size8KB = 8, Size16KB = 16, Size32KB = 32, Size64KB = 64, Size128KB = 128, Size256KB = 256, Size512KB = 512, Size1024KB = 1024
+    var sizeInKB: UInt { return UInt(self.numChrBlocks) * 8 }
     
-    var friendlyName:String { return "\(self.rawValue) KB" }
+    var friendlyName:String { return "\(self.sizeInKB) KB" }
     
-    var fileSizeInBytes:UInt { return self.rawValue * 1024 }
+    var fileSizeInBytes:UInt { return self.sizeInKB * 1024 }
     
     var numCHRsInFile:UInt { return self.fileSizeInBytes / UInt(kCHRSizeInBytes) }
     
@@ -34,6 +36,4 @@ public enum SupportedFileSize:UInt {
     var numCHRRows:UInt { return self.numCHRsInFile / self.numCHRCols }
     
     var sizeinPixels:(width: UInt, height:UInt) { return (UInt(kCHRWidthInPixels) * self.numCHRCols, UInt(kCHRHeightInPixels) * self.numCHRRows) }
-    
-    static let allValues:[SupportedFileSize] = [.Size8KB, .Size16KB, .Size32KB, .Size64KB]
 }
