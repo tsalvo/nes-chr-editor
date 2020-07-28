@@ -70,7 +70,6 @@ class EditView: NSView, CHRSelectionProtocol {
             
             // a new edit has begun
             if !self.didStartEditing {
-                Swift.print("new edit")
                 self.gridHistoryDelegate?.CHRGridWillChange()
                 self.didStartEditing = true
             }
@@ -82,8 +81,6 @@ class EditView: NSView, CHRSelectionProtocol {
                                         height: blockSize.height))
             self.tileEditDelegate?.tileEdited(withCHR: self.chr)
         }
-        
-        Swift.print("Painted CHR Row: \(row), Col: \(col)")
     }
     
     override func mouseDown(with event: NSEvent) {
@@ -91,7 +88,6 @@ class EditView: NSView, CHRSelectionProtocol {
     }
     
     override func mouseUp(with event: NSEvent) {
-        Swift.print("mouse up")
         self.didStartEditing = false
     }
     

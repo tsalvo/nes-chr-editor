@@ -37,11 +37,6 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
         self.gridCollectionView.dataSource = self
     }
     
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        self.gridCollectionView.reloadData()
-    }
-    
     override func updateViewConstraints() {
         super.updateViewConstraints()
         self.gridCollectionView.collectionViewLayout?.invalidateLayout()
@@ -102,7 +97,7 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
     // MARK: - NSCollectionViewDataSource
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(grid.fileSize.numCHRsInFile)
+        return Int(ChrFileSize(numChrBlocks: grid.numChrBlocks).numCHRsInFile)
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -141,8 +136,6 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
         self.CHRGridHistory.insert(self.grid, at: 0)    // add most recent grid to the front of the history
         
         self.fileEditDelegate?.fileWasEdited()
-        
-        Swift.print("Grid is changing.  Adding current grid to history - total count \(self.CHRGridHistory.count)")
     }
     
     func undo() {
