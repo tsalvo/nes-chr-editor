@@ -380,6 +380,14 @@
                                     <segue destination="A66-Qe-H8A" kind="embed" identifier="embedPaletteColor" id="N01-4i-5Vk"/>
                                 </connections>
                             </containerView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmt-NT-tQd">
+                                <rect key="frame" x="351" y="10" width="196" height="128"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="s6S-kX-gZZ">
+                                    <font key="font" size="13" name="Monaco"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Z37-92-vyl" secondAttribute="bottom" constant="10" id="1Lc-aF-oUH"/>
@@ -388,6 +396,8 @@
                             <constraint firstItem="sWB-kj-iRJ" firstAttribute="leading" secondItem="6Nm-ug-xGm" secondAttribute="leading" id="57b-KI-INk"/>
                             <constraint firstAttribute="trailing" secondItem="6Nm-ug-xGm" secondAttribute="trailing" constant="10" id="8hA-El-unu"/>
                             <constraint firstItem="mtc-3K-6lt" firstAttribute="top" secondItem="6Nm-ug-xGm" secondAttribute="bottom" constant="15" id="A5O-Ae-KqK"/>
+                            <constraint firstItem="qmt-NT-tQd" firstAttribute="leading" secondItem="Z37-92-vyl" secondAttribute="trailing" constant="15" id="As6-7h-0EL"/>
+                            <constraint firstItem="qmt-NT-tQd" firstAttribute="top" secondItem="zAz-4I-8wR" secondAttribute="bottom" constant="8" id="BlI-DU-4Fs"/>
                             <constraint firstItem="sWB-kj-iRJ" firstAttribute="top" secondItem="5iD-pS-Nc8" secondAttribute="bottom" id="Ftc-3I-diG"/>
                             <constraint firstItem="zAz-4I-8wR" firstAttribute="leading" secondItem="6Nm-ug-xGm" secondAttribute="leading" id="KJp-x7-D4d"/>
                             <constraint firstItem="zAz-4I-8wR" firstAttribute="trailing" secondItem="6Nm-ug-xGm" secondAttribute="trailing" id="LPi-t9-87K"/>
@@ -412,6 +422,7 @@
                         <outlet property="palletteView1" destination="v3v-H2-w3d" id="vii-di-ShL"/>
                         <outlet property="palletteView2" destination="HGr-7a-i64" id="5b0-Zn-W4P"/>
                         <outlet property="palletteView3" destination="f9Q-lR-exY" id="bxY-bp-WMa"/>
+                        <outlet property="selectionLabel" destination="qmt-NT-tQd" id="Rde-c2-7RJ"/>
                         <segue destination="sf9-JZ-Ehp" kind="modal" identifier="presentFileSelectionDialog" id="EXO-VL-qtU"/>
                     </connections>
                 </viewController>

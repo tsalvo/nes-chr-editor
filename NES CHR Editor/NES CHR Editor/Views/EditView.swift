@@ -8,7 +8,7 @@
 
 import AppKit
 
-class EditView: NSView, CHRSelectionProtocol {
+class EditView: NSView {
     
     var tileEditDelegate:CHREditProtocol?
     var gridHistoryDelegate:CHRGridHistoryProtocol?
