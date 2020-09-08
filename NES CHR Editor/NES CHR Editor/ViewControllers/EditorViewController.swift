@@ -28,7 +28,7 @@ protocol FileEditProtocol {
     func fileWasEdited()
 }
 
-class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectionProtocol, PaletteColorSelectionProtocol, PalettePresetSelectionProtocol, NSWindowDelegate{
+class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectionProtocol, PaletteColorSelectionProtocol, PalettePresetSelectionProtocol, CHRSelectionProtocol, NSWindowDelegate{
 
     var fullGridCollectionView:FullGridCollectionViewController?
     @IBOutlet weak var editView:EditView!
@@ -37,6 +37,8 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     @IBOutlet weak var palletteView1:NSView!
     @IBOutlet weak var palletteView2:NSView!
     @IBOutlet weak var palletteView3:NSView!
+    
+    @IBOutlet weak var selectionLabel:NSTextField!
     
     var shouldShowFileSizeSelectionDialog = false
     var windowControllerDelegate:WindowControllerProtocol?
@@ -64,7 +66,7 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
             vc.fileSizeSelectionDelegate = self
         } else if let vc = segue.destinationController as? FullGridCollectionViewController {
             vc.fileEditDelegate = self
-            vc.tileSelectionDelegate = self.editView
+            vc.tileSelectionDelegate = self
             self.editView.tileEditDelegate = vc
             self.editView.gridHistoryDelegate = vc
             self.fullGridCollectionView = vc
@@ -309,6 +311,31 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
         self.palletteView1.setNeedsDisplay(self.palletteView1.bounds)
         self.palletteView2.setNeedsDisplay(self.palletteView2.bounds)
         self.palletteView3.setNeedsDisplay(self.palletteView3.bounds)
+        
+        self.renderSelectedOffset()
+    }
+    
+    // Renders useful information about the selected CHR index to selectionLabel
+    private func renderSelectedOffset() {
+        if let safeCHRIndex = self.fullGridCollectionView?.grid.selectedCHRIndex {
+            // Which pattern table this index is in
+            let table = String(format:"%3d", safeCHRIndex / 256)
+            // Index relative to the pattern table
+            let relativeIndex = safeCHRIndex % 256
+            // Formatted string for the actual index
+            let chrString = String(format:"%3d", safeCHRIndex)
+            // Formatted string for the relative index
+            let relativeString = String(format:"%3d", relativeIndex)
+            // Asm formatted hex string for the relative index
+            let relativeHex = String(format:"%02X", relativeIndex)
+            
+            selectionLabel.stringValue = "Selection\n Index:\t\t\(chrString)\n Table:\t\t\(String(table))\n Offset:\t\(relativeString)\n Hex:\t\t$\(relativeHex)"
+        }
+    }
+    
+    func tileSelected(withCHR aCHR: CHR) {
+        self.editView.tileSelected(withCHR: aCHR)
+        renderSelectedOffset()
     }
     
     // MARK: - NSWindowDelegate
