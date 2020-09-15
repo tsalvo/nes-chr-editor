@@ -24,7 +24,7 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
         }
     }
     
-    var CHRClipboard:CHR?
+    static var CHRClipboard:CHR?
     
     var brushColor:PaletteColor = .Color3
     
@@ -187,9 +187,9 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
     
     func cutCHR() {
         
-        self.CHRClipboard = self.grid.getCHR(atIndex: self.grid.selectedCHRIndex)
+        FullGridCollectionViewController.CHRClipboard = self.grid.getCHR(atIndex: self.grid.selectedCHRIndex)
         
-        if let safeCHRClipboard = self.CHRClipboard, !safeCHRClipboard.isEmpty() {
+        if let safeCHRClipboard = FullGridCollectionViewController.CHRClipboard, !safeCHRClipboard.isEmpty() {
             self.CHRGridWillChange()
             self.grid.setCHR(chr: CHR(), atIndex: self.grid.selectedCHRIndex)
             self.gridCollectionView.reloadItems(at: [IndexPath(item: Int(self.grid.selectedCHRIndex), section: 0)])
@@ -199,11 +199,11 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
     
     func copyCHR() {
         
-        self.CHRClipboard = self.grid.getCHR(atIndex: self.grid.selectedCHRIndex)
+        FullGridCollectionViewController.CHRClipboard = self.grid.getCHR(atIndex: self.grid.selectedCHRIndex)
     }
     
     func pasteCHR() {
-        if let safeCHRClipboard = self.CHRClipboard {
+        if let safeCHRClipboard = FullGridCollectionViewController.CHRClipboard {
             self.CHRGridWillChange()
             
             self.grid.setCHR(chr: safeCHRClipboard, atIndex: self.grid.selectedCHRIndex)
