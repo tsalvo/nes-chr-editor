@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EditorViewController.swift
 //  NES CHR Editor
 //
 //  Created by Tom Salvo on 9/18/16.
