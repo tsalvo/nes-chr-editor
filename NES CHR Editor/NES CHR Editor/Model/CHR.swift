@@ -73,7 +73,22 @@ struct CHR {
                 retValue.append(".byte ")
             }
             
-            retValue.append(b.hexString)
+            retValue.append(b.asmHexString)
+            
+            if i % 8 == 7 {
+                retValue.append("\n")
+            } else {
+                retValue.append(",")
+            }
+        }
+        
+        return retValue
+    }
+    
+    func toCArrayElementString() -> String {
+        var retValue: String = ""
+        for (i, b) in self.toBytes().enumerated() {
+            retValue.append(b.cHexString)
             
             if i % 8 == 7 {
                 retValue.append("\n")

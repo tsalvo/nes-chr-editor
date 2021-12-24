@@ -33,6 +33,19 @@ struct CHRGrid {
         return retValue
     }
     
+    func toCArrayText() -> String {
+        var retValue = "[\n"
+        
+        for (index, chr) in grid.enumerated() {
+            retValue.append("// \(index)\n")
+            retValue.append(chr.toCArrayElementString())
+        }
+        
+        retValue.append("\n]")
+        
+        return retValue
+    }
+    
     func toData() -> Data {
         var retValue = Data()
         for chr in grid {

@@ -11,9 +11,15 @@ import Foundation
 extension UInt8
 {
     /// Returns an assembler-friendly representation of the hex value of this byte (e.g. 0 = $00, 255 = $FF)
-    var hexString: String
+    var asmHexString: String
     {
         return String(format: "$%02X", self)
+    }
+    
+    /// Returns a C-style hex representation of the hex value of this byte (e.g. 0 = 0x00, 255 = 0xFF)
+    var cHexString: String
+    {
+        return String(format: "0x%02X", self)
     }
     
     /// Returns a UInt8 value from an array of 8 boolean values in big endian order (more significant, or "higher", bits first)
