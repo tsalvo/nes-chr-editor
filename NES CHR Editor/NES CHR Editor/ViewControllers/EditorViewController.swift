@@ -218,9 +218,14 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     }
     
     @IBAction func exportToAsm6CodeFileMenuItemSelected(sender:NSMenuItem) {
-        
         if let safeCHRGrid = self.fullGridCollectionView?.grid {
-            let _ = saveAsm6File(withCHRGrid: safeCHRGrid)
+            saveAsm6File(withCHRGrid: safeCHRGrid)
+        }
+    }
+    
+    @IBAction func exportToCArrayCodeFileMenuItemSelected(sender:NSMenuItem) {
+        if let safeCHRGrid = self.fullGridCollectionView?.grid {
+            saveCArrayFile(withCHRGrid: safeCHRGrid)
         }
     }
     
