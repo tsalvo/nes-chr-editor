@@ -27,16 +27,16 @@ class GridItemView: NSView {
         
         bounds.fill()
         
-        let blockSize = CGSize(width: bounds.size.width / CGFloat(kCHRWidthInPixels), height: bounds.size.height / CGFloat(kCHRHeightInPixels))
+        let blockSize = CGSize(width: bounds.size.width / CGFloat(Constants.tileWidth), height: bounds.size.height / CGFloat(Constants.tileHeight))
         
-        for chrRow in 0..<kCHRHeightInPixels {
-            for chrCol in 0..<kCHRWidthInPixels {
+        for chrRow in 0 ..< Constants.tileHeight {
+            for chrCol in 0 ..< Constants.tileWidth {
                 let currentPaletteColor = chr.color(atRow: chrRow, atCol: chrCol)
                 
                 if currentPaletteColor != .Color0 {
                     currentPaletteColor.color.setFill()
                     CGRect(x: CGFloat(chrCol) * blockSize.width,
-                               y: CGFloat(kCHRHeightInPixels - chrRow - 1) * blockSize.height,
+                               y: CGFloat(Constants.tileHeight - chrRow - 1) * blockSize.height,
                                width: blockSize.width,
                                height: blockSize.height).fill()
                 }

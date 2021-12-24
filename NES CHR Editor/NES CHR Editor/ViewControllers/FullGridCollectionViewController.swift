@@ -126,7 +126,7 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
     func CHRGridWillChange() {
         
         // remove the oldest CHR grids from the history until we're below the maximum allowed
-        while self.CHRGridHistory.count >= Int(kMaxCHRGridHistory) {
+        while self.CHRGridHistory.count >= Int(Constants.maxCHRGridHistory) {
             let _ = self.CHRGridHistory.popLast()
         }
         
@@ -146,7 +146,7 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
             Swift.print("Undo - Getting first of \(self.CHRGridHistory.count) items in History")
             
             // remove the oldest CHR grids from the grid future until we're below the maximum allowed
-            while self.CHRGridFuture.count >= Int(kMaxCHRGridHistory) {
+            while self.CHRGridFuture.count >= Int(Constants.maxCHRGridHistory) {
                 let _ = self.CHRGridFuture.popLast()
             }
             
