@@ -147,10 +147,10 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     @IBAction func saveMenuItemSelected(sender:NSMenuItem) {
         print("Save")
         if let safeURL = self.fileURL, let safeGrid = self.fullGridCollectionView?.grid {
-            saveCHRFile(withCHRGrid: safeGrid, toURL: safeURL)
+            saveCHRFile(withCHRGrid: safeGrid, scheme: .nes, toURL: safeURL)
             self.windowControllerDelegate?.fileWasEdited(edited: false)
         } else {
-            if let safeGrid = self.fullGridCollectionView?.grid, let safeURL = saveCHRFile(withCHRGrid: safeGrid) {
+            if let safeGrid = self.fullGridCollectionView?.grid, let safeURL = saveCHRFile(withCHRGrid: safeGrid, scheme: .nes) {
                 self.windowControllerDelegate?.fileNameChanged(newFileName: safeURL.lastPathComponent)
                 self.windowControllerDelegate?.fileWasEdited(edited: false)
                 self.windowControllerDelegate?.fileWasOpened()
@@ -163,7 +163,7 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     
     @IBAction func saveAsMenuItemSelected(sender:NSMenuItem) {
         print("Save as...")
-        if let safeGrid = self.fullGridCollectionView?.grid, let safeURL = saveCHRFile(withCHRGrid: safeGrid) {
+        if let safeGrid = self.fullGridCollectionView?.grid, let safeURL = saveCHRFile(withCHRGrid: safeGrid, scheme: .nes) {
             self.windowControllerDelegate?.fileNameChanged(newFileName: safeURL.lastPathComponent)
             self.windowControllerDelegate?.fileWasEdited(edited: false)
             self.windowControllerDelegate?.fileWasOpened()
@@ -217,15 +217,27 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
         }
     }
     
-    @IBAction func exportToAsm6CodeFileMenuItemSelected(sender:NSMenuItem) {
+    @IBAction func exportToNESAssemblyCodeFileMenuItemSelected(sender:NSMenuItem) {
         if let safeCHRGrid = self.fullGridCollectionView?.grid {
-            saveAsm6File(withCHRGrid: safeCHRGrid)
+            saveAsm6File(withCHRGrid: safeCHRGrid, scheme: .nes)
         }
     }
     
-    @IBAction func exportToCArrayCodeFileMenuItemSelected(sender:NSMenuItem) {
+    @IBAction func exportToGameBoyAssemblyCodeFileMenuItemSelected(sender:NSMenuItem) {
         if let safeCHRGrid = self.fullGridCollectionView?.grid {
-            saveCArrayFile(withCHRGrid: safeCHRGrid)
+            saveAsm6File(withCHRGrid: safeCHRGrid, scheme: .gb)
+        }
+    }
+    
+    @IBAction func exportToNESCArrayCodeFileMenuItemSelected(sender:NSMenuItem) {
+        if let safeCHRGrid = self.fullGridCollectionView?.grid {
+            saveCArrayFile(withCHRGrid: safeCHRGrid, scheme: .nes)
+        }
+    }
+    
+    @IBAction func exportToGameBoyCArrayCodeFileMenuItemSelected(sender:NSMenuItem) {
+        if let safeCHRGrid = self.fullGridCollectionView?.grid {
+            saveCArrayFile(withCHRGrid: safeCHRGrid, scheme: .gb)
         }
     }
     

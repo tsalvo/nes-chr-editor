@@ -8,9 +8,9 @@
 
 import AppKit
 
-func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, toURL aURL:URL) {
+func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, scheme: CHRScheme, toURL aURL:URL) {
     
-    let fileData = aChrGrid.toData()
+    let fileData = aChrGrid.toData(scheme: scheme)
     let chrFileSize: ChrFileSize = ChrFileSize(numChrBlocks: aChrGrid.numChrBlocks)
     
     if fileData.count == Int(chrFileSize.fileSizeInBytes) {
@@ -30,7 +30,7 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, toURL aURL:URL) {
     }
 }
 
-@discardableResult func saveAsm6File(withCHRGrid aChrGrid:CHRGrid) -> URL? {
+@discardableResult func saveAsm6File(withCHRGrid aChrGrid:CHRGrid, scheme: CHRScheme) -> URL? {
     let savePanel = NSSavePanel()
     savePanel.nameFieldStringValue = "untitled" + ".s"
     
@@ -40,7 +40,7 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, toURL aURL:URL) {
         
         guard let fileURL = savePanel.url else { return nil }
         
-        let fileText = aChrGrid.toAsm6Text()
+        let fileText = aChrGrid.toAsm6Text(scheme: scheme)
         
         guard let fileData = fileText.data(using: .utf8) else { return nil }
         
@@ -62,7 +62,7 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, toURL aURL:URL) {
     }
 }
 
-@discardableResult func saveCArrayFile(withCHRGrid aChrGrid:CHRGrid) -> URL? {
+@discardableResult func saveCArrayFile(withCHRGrid aChrGrid:CHRGrid, scheme: CHRScheme) -> URL? {
     let savePanel = NSSavePanel()
     savePanel.nameFieldStringValue = "untitled" + ".c"
     
@@ -72,7 +72,7 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, toURL aURL:URL) {
         
         guard let fileURL = savePanel.url else { return nil }
         
-        let fileText = aChrGrid.toCArrayText()
+        let fileText = aChrGrid.toCArrayText(scheme: scheme)
         
         guard let fileData = fileText.data(using: .utf8) else { return nil }
         
@@ -94,7 +94,7 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, toURL aURL:URL) {
     }
 }
 
-func saveCHRFile(withCHRGrid aChrGrid:CHRGrid) -> URL? {
+func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, scheme: CHRScheme) -> URL? {
     
     let savePanel = NSSavePanel()
     savePanel.nameFieldStringValue = "untitled" + ".chr"
@@ -107,7 +107,7 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid) -> URL? {
         
         guard let fileURL = savePanel.url else { return nil }
         
-        let fileData = aChrGrid.toData()
+        let fileData = aChrGrid.toData(scheme: scheme)
         
         if fileData.count == Int(chrFileSize.fileSizeInBytes) {
             // write to file
@@ -291,7 +291,7 @@ func exportCHRToNESROMFile(withCHRGrid aChrGrid:CHRGrid) -> Bool {
             let chrOffset: Int = prgOffset + totalPrgSize // chr blocks come after prg blocks
             
             let leadingData: Data = data.subdata(in: 0 ..< chrOffset)
-            let newChrData: Data = aChrGrid.toData()
+            let newChrData: Data = aChrGrid.toData(scheme: .nes)
             
             var outputData: Data = Data()
             outputData.append(leadingData)

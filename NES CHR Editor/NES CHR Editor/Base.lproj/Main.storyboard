@@ -89,22 +89,35 @@
                                                 <action selector="importFromNESROMMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="ieM-ni-khs"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" tag="3" id="IVN-Wq-o4R"/>
                                         <menuItem title="Export CHR to NES ROM…" tag="5" id="rfD-7e-gnk">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="exportToNESROMFileMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="OZQ-wr-Ti3"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Export CHR to ASM6 Code…" tag="5" id="KKD-d1-VzJ">
+                                        <menuItem title="Export CHR to NES ASM6 Assembly…" tag="5" id="KKD-d1-VzJ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="exportToAsm6CodeFileMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="UaF-ur-kKk"/>
+                                                <action selector="exportToNESAssemblyCodeFileMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="a8O-L3-S8f"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Export CHR to C Array…" tag="5" id="9e2-v4-yjF">
+                                        <menuItem title="Export CHR to NES C Array…" tag="5" id="9e2-v4-yjF">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="exportToCArrayCodeFileMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="gMJ-bf-7X7"/>
+                                                <action selector="exportToNESCArrayCodeFileMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="dvN-3F-S3k"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export CHR to GameBoy Z80 Assembly…" tag="5" id="2TI-cz-ZoV">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportToGameBoyAssemblyCodeFileMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="eYC-TU-nmd"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export CHR to GameBoy C Array…" tag="5" id="elG-i1-23O">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportToGameBoyCArrayCodeFileMenuItemSelectedWithSender:" target="Ady-hI-5gd" id="b61-xl-Jrs"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" tag="6" id="q5s-kg-xh7"/>
@@ -386,8 +399,8 @@
                                     <segue destination="A66-Qe-H8A" kind="embed" identifier="embedPaletteColor" id="N01-4i-5Vk"/>
                                 </connections>
                             </containerView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmt-NT-tQd">
-                                <rect key="frame" x="351" y="10" width="196" height="128"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qmt-NT-tQd">
+                                <rect key="frame" x="351" y="122" width="196" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="s6S-kX-gZZ">
                                     <font key="font" size="13" name="Monaco"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -404,6 +417,7 @@
                             <constraint firstItem="mtc-3K-6lt" firstAttribute="top" secondItem="6Nm-ug-xGm" secondAttribute="bottom" constant="15" id="A5O-Ae-KqK"/>
                             <constraint firstItem="qmt-NT-tQd" firstAttribute="leading" secondItem="Z37-92-vyl" secondAttribute="trailing" constant="15" id="As6-7h-0EL"/>
                             <constraint firstItem="qmt-NT-tQd" firstAttribute="top" secondItem="zAz-4I-8wR" secondAttribute="bottom" constant="8" id="BlI-DU-4Fs"/>
+                            <constraint firstItem="qmt-NT-tQd" firstAttribute="trailing" secondItem="6Nm-ug-xGm" secondAttribute="trailing" id="EYu-d3-TFe"/>
                             <constraint firstItem="sWB-kj-iRJ" firstAttribute="top" secondItem="5iD-pS-Nc8" secondAttribute="bottom" id="Ftc-3I-diG"/>
                             <constraint firstItem="zAz-4I-8wR" firstAttribute="leading" secondItem="6Nm-ug-xGm" secondAttribute="leading" id="KJp-x7-D4d"/>
                             <constraint firstItem="zAz-4I-8wR" firstAttribute="trailing" secondItem="6Nm-ug-xGm" secondAttribute="trailing" id="LPi-t9-87K"/>

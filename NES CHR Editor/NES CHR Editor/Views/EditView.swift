@@ -18,7 +18,7 @@ class EditView: NSView {
     var didStartEditing = false
     
     var chr:CHR = CHR()
-    var colors:[PaletteColor] = [PaletteColor](repeating:.Color0, count: kCHRWidthInPixels * kCHRHeightInPixels)
+    var colors:[PaletteColor] = [PaletteColor](repeating:.Color0, count: Constants.tileWidth * Constants.tileHeight)
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -26,10 +26,10 @@ class EditView: NSView {
         PaletteColor.Color0.color.setFill()
         bounds.fill()
         
-        let blockSize = CGSize(width: bounds.width/CGFloat(kCHRWidthInPixels), height: bounds.height/CGFloat(kCHRHeightInPixels))
+        let blockSize = CGSize(width: bounds.width/CGFloat(Constants.tileWidth), height: bounds.height/CGFloat(Constants.tileHeight))
         
-        for row in 0..<kCHRHeightInPixels {
-            for col in 0..<kCHRWidthInPixels {
+        for row in 0 ..< Constants.tileHeight {
+            for col in 0 ..< Constants.tileWidth {
                 
                 let currentPaleteColor = self.chr.color(atRow: row, atCol: col)
                 
@@ -37,7 +37,7 @@ class EditView: NSView {
                     
                     currentPaleteColor.color.setFill()
                     CGRect(x: CGFloat(col) * blockSize.width,
-                               y: CGFloat(((kCHRHeightInPixels - 1)) - row) * blockSize.height,
+                               y: CGFloat(((Constants.tileHeight - 1)) - row) * blockSize.height,
                                width: blockSize.height,
                                height: blockSize.height).fill()
                 }
@@ -57,14 +57,14 @@ class EditView: NSView {
     
     override func mouseDragged(with event: NSEvent) {
         
-        let blockSize = CGSize(width: bounds.width/CGFloat(kCHRWidthInPixels), height: bounds.height/CGFloat(kCHRHeightInPixels))
+        let blockSize = CGSize(width: bounds.width/CGFloat(Constants.tileWidth), height: bounds.height/CGFloat(Constants.tileHeight))
         
         let loc = convert(event.locationInWindow, from: nil)
         
-        let point = NSPoint(x: CGFloat(kCHRWidthInPixels) * loc.x / bounds.width, y: CGFloat(kCHRHeightInPixels) * loc.y / bounds.height)
+        let point = NSPoint(x: CGFloat(Constants.tileWidth) * loc.x / bounds.width, y: CGFloat(Constants.tileHeight) * loc.y / bounds.height)
         
-        let col:Int = (point.x < 0 ? 0 : Int(point.x) > kCHRWidthInPixels-1 ? kCHRWidthInPixels-1 : Int(point.x))
-        let row:Int = (kCHRHeightInPixels - 1) - (point.y < 0 ? 0 : Int(point.y) > kCHRHeightInPixels-1 ? kCHRHeightInPixels-1 : Int(point.y))
+        let col:Int = (point.x < 0 ? 0 : Int(point.x) > Constants.tileWidth - 1 ? Constants.tileWidth - 1 : Int(point.x))
+        let row:Int = (Constants.tileHeight - 1) - (point.y < 0 ? 0 : Int(point.y) > Constants.tileHeight - 1 ? Constants.tileHeight - 1 : Int(point.y))
         
         if self.chr.color(atRow: row, atCol: col) != brushColor {
             
@@ -76,7 +76,7 @@ class EditView: NSView {
             
             self.chr.setColor(palleteColor: brushColor, atRow: row, atCol: col)
             self.setNeedsDisplay(CGRect(x: CGFloat(col) * blockSize.width,
-                                        y: CGFloat(((kCHRHeightInPixels - 1)) - row) * blockSize.height,
+                                        y: CGFloat(((Constants.tileHeight - 1)) - row) * blockSize.height,
                                         width: blockSize.height,
                                         height: blockSize.height))
             self.tileEditDelegate?.tileEdited(withCHR: self.chr)

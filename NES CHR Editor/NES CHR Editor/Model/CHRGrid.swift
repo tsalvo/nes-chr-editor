@@ -22,23 +22,23 @@ struct CHRGrid {
     
     var selectedCHRIndex:UInt = 0
     
-    func toAsm6Text() -> String {
+    func toAsm6Text(scheme: CHRScheme) -> String {
         var retValue = ""
         
         for (index, chr) in grid.enumerated() {
             retValue.append("; \(index)\n")
-            retValue.append(chr.toAsm6String())
+            retValue.append(chr.toAsm6String(scheme: scheme))
         }
         
         return retValue
     }
     
-    func toCArrayText() -> String {
+    func toCArrayText(scheme: CHRScheme) -> String {
         var retValue = "[\n"
         
         for (index, chr) in grid.enumerated() {
             retValue.append("// \(index)\n")
-            retValue.append(chr.toCArrayElementString())
+            retValue.append(chr.toCArrayElementString(scheme: scheme))
         }
         
         retValue.append("\n]")
@@ -46,10 +46,10 @@ struct CHRGrid {
         return retValue
     }
     
-    func toData() -> Data {
+    func toData(scheme: CHRScheme) -> Data {
         var retValue = Data()
         for chr in grid {
-            retValue.append(chr.toData())
+            retValue.append(chr.toData(scheme: scheme))
         }
         
         return retValue
@@ -74,7 +74,7 @@ struct CHRGrid {
         self.grid = [CHR](repeating:CHR(), count: Int(ChrFileSize(numChrBlocks: numChrBlocks).numCHRsInFile))
         
         for (chrIndex, _) in grid.enumerated() {
-            self.grid[chrIndex] = CHR(fromData: aData.subdata(in: Range(uncheckedBounds: (chrIndex * kCHRSizeInBytes, chrIndex * kCHRSizeInBytes + kCHRSizeInBytes))))
+            self.grid[chrIndex] = CHR(fromData: aData.subdata(in: Range(uncheckedBounds: (chrIndex * Constants.tileSizeInBytes, chrIndex * Constants.tileSizeInBytes + Constants.tileSizeInBytes))))
         }
     }
 }
