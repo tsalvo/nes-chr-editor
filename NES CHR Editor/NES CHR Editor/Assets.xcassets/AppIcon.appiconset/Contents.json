@@ -1,68 +1,68 @@
 {
   "images" : [
     {
-      "size" : "16x16",
+      "filename" : "Icon16.png",
       "idiom" : "mac",
-      "filename" : "NES CHR Editor 16.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "16x16"
     },
     {
-      "size" : "16x16",
+      "filename" : "Icon32-1.png",
       "idiom" : "mac",
-      "filename" : "NES CHR Editor 32-1.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "16x16"
     },
     {
-      "size" : "32x32",
+      "filename" : "Icon32.png",
       "idiom" : "mac",
-      "filename" : "NES CHR Editor 32.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "32x32"
     },
     {
-      "size" : "32x32",
+      "filename" : "Icon64.png",
       "idiom" : "mac",
-      "filename" : "NES CHR Editor 64.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "32x32"
     },
     {
-      "size" : "128x128",
+      "filename" : "Icon128.png",
       "idiom" : "mac",
-      "filename" : "NES CHR Editor 128.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "128x128"
     },
     {
-      "size" : "128x128",
+      "filename" : "Icon256-1.png",
       "idiom" : "mac",
-      "filename" : "NES CHR Editor 256-1.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "128x128"
     },
     {
-      "size" : "256x256",
+      "filename" : "Icon256.png",
       "idiom" : "mac",
-      "filename" : "NES CHR Editor 256.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "256x256"
     },
     {
-      "size" : "256x256",
+      "filename" : "Icon512-1.png",
       "idiom" : "mac",
-      "filename" : "NES CHR Editor 512-1.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "256x256"
     },
     {
-      "size" : "512x512",
+      "filename" : "Icon512.png",
       "idiom" : "mac",
-      "filename" : "NES CHR Editor 512.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "512x512"
     },
     {
-      "size" : "512x512",
+      "filename" : "Icon1024.png",
       "idiom" : "mac",
-      "filename" : "NES CHR Editor 1024.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "512x512"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
