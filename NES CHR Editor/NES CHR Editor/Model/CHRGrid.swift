@@ -66,7 +66,6 @@ struct CHRGrid {
         
         let numChrBlocks: UInt8 = UInt8(aData.count / 8192)
         guard numChrBlocks > 0 else {
-            Swift.print("Error Creating CHR Grid From Data.  The number of bytes in the data (\(aData.count)) does not match an expected value")
             return
         }
         

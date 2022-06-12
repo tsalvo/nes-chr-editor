@@ -143,8 +143,6 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
         // if there's a CHR grid in the history
         if let safeMostRecentGrid = self.CHRGridHistory.first {
             
-            Swift.print("Undo - Getting first of \(self.CHRGridHistory.count) items in History")
-            
             // remove the oldest CHR grids from the grid future until we're below the maximum allowed
             while self.CHRGridFuture.count >= Int(Constants.maxCHRGridHistory) {
                 let _ = self.CHRGridFuture.popLast()
@@ -159,8 +157,6 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
             self.tileSelectionDelegate?.tileSelected(withCHR: self.grid.getCHR(atIndex: self.grid.selectedCHRIndex))
             
             self.CHRGridHistory.removeFirst()   // remove most recent grid from the front of the history
-        } else {
-            Swift.print("Cannot Undo - History is empty")
         }
     }
     
@@ -168,9 +164,6 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
         
         // if there's a CHR Grid in the future
         if let safeNextFutureGrid = self.CHRGridFuture.first {
-            
-            Swift.print("Redo - Getting first of \(self.CHRGridFuture.count) items in Future")
-            
             self.CHRGridHistory.insert(self.grid, at: 0)    // add current grid to the front of the history
             
             self.grid = safeNextFutureGrid
@@ -180,8 +173,6 @@ class FullGridCollectionViewController: NSViewController, NSCollectionViewDelega
             self.tileSelectionDelegate?.tileSelected(withCHR: self.grid.getCHR(atIndex: self.grid.selectedCHRIndex))
             
             self.CHRGridFuture.removeFirst()   // remove most recent grid from the front of the future
-        } else {
-            Swift.print("Cannot Redo - Future is empty")
         }
     }
     

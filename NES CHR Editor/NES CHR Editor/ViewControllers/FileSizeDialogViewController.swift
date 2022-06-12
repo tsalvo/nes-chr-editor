@@ -66,7 +66,6 @@ class FileSizeDialogViewController: NSViewController {
     }
     
     @IBAction func okButtonSelected(sender:NSButton) {
-        print("File Size - OK - selected file size \(ChrFileSize(numChrBlocks: self.numChrBlocks).friendlyName)")
         self.fileSizeSelectionDelegate?.fileSizeSelected(self.numChrBlocks)
         self.dismiss(self)
     }
