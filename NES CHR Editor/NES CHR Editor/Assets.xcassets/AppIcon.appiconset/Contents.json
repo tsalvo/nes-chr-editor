@@ -1,68 +1,68 @@
 {
   "images" : [
     {
-      "filename" : "Icon16.png",
+      "size" : "16x16",
       "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "16x16"
+      "filename" : "Icon1024-16.png",
+      "scale" : "1x"
     },
     {
-      "filename" : "Icon32-1.png",
+      "size" : "16x16",
       "idiom" : "mac",
-      "scale" : "2x",
-      "size" : "16x16"
+      "filename" : "Icon1024-32.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "Icon32.png",
+      "size" : "32x32",
       "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "32x32"
+      "filename" : "Icon1024-32.png",
+      "scale" : "1x"
     },
     {
-      "filename" : "Icon64.png",
+      "size" : "32x32",
       "idiom" : "mac",
-      "scale" : "2x",
-      "size" : "32x32"
+      "filename" : "Icon1024-64.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "Icon128.png",
+      "size" : "128x128",
       "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "128x128"
+      "filename" : "Icon1024-128.png",
+      "scale" : "1x"
     },
     {
-      "filename" : "Icon256-1.png",
+      "size" : "128x128",
       "idiom" : "mac",
-      "scale" : "2x",
-      "size" : "128x128"
+      "filename" : "Icon1024-256.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "Icon256.png",
+      "size" : "256x256",
       "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "256x256"
+      "filename" : "Icon1024-256.png",
+      "scale" : "1x"
     },
     {
-      "filename" : "Icon512-1.png",
+      "size" : "256x256",
       "idiom" : "mac",
-      "scale" : "2x",
-      "size" : "256x256"
+      "filename" : "Icon1024-512.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "Icon512.png",
+      "size" : "512x512",
       "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "512x512"
+      "filename" : "Icon1024-512.png",
+      "scale" : "1x"
     },
     {
-      "filename" : "Icon1024.png",
+      "size" : "512x512",
       "idiom" : "mac",
-      "scale" : "2x",
-      "size" : "512x512"
+      "filename" : "Icon1024-1024.png",
+      "scale" : "2x"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }
