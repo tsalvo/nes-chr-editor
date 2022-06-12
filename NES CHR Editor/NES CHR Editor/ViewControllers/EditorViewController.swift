@@ -102,8 +102,6 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     // MARK: - PaletteColorSelectionProtocol
     
     func paletteColorSelected(withColor aColor: NSColor, atIndex aIndex:UInt) {
-        Swift.print("paletteColorSelected:\(aColor) index: \(aIndex)")
-        
         let isUsingCustomIndexedPaletteSet = UserDefaults.standard.bool(forKey: "UseCustomPaletteSet")
         
         if !isUsingCustomIndexedPaletteSet {
@@ -132,8 +130,6 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     // MARK: - PalettePresetSelectionProtocol
     
     func palettePresetSelected(withPreset aPreset:IndexedPaletteSet, atIndex aIndex:Int) {
-        Swift.print("palettePresetSelected : colors \(aPreset.color0), \(aPreset.color1), \(aPreset.color2), \(aPreset.color3)")
-        
         UserDefaults.standard.set(false, forKey: "UseCustomPaletteSet")
         UserDefaults.standard.set(aIndex, forKey: "IndexedPaletteSet")
         UserDefaults.standard.synchronize()
@@ -145,7 +141,6 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     // MARK: - Menu Item Actions
     
     @IBAction func saveMenuItemSelected(sender:NSMenuItem) {
-        print("Save")
         if let safeURL = self.fileURL, let safeGrid = self.fullGridCollectionView?.grid {
             saveCHRFile(withCHRGrid: safeGrid, scheme: .nes, toURL: safeURL)
             self.windowControllerDelegate?.fileWasEdited(edited: false)
@@ -155,21 +150,16 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
                 self.windowControllerDelegate?.fileWasEdited(edited: false)
                 self.windowControllerDelegate?.fileWasOpened()
                 self.fileURL = safeURL
-            } else {
-                print("Error saving file")
             }
         }
     }
     
     @IBAction func saveAsMenuItemSelected(sender:NSMenuItem) {
-        print("Save as...")
         if let safeGrid = self.fullGridCollectionView?.grid, let safeURL = saveCHRFile(withCHRGrid: safeGrid, scheme: .nes) {
             self.windowControllerDelegate?.fileNameChanged(newFileName: safeURL.lastPathComponent)
             self.windowControllerDelegate?.fileWasEdited(edited: false)
             self.windowControllerDelegate?.fileWasOpened()
             self.fileURL = safeURL
-        } else {
-            print("Error saving file")
         }
     }
     
@@ -186,8 +176,6 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
             self.windowControllerDelegate?.fileWasEdited(edited: false)
             self.windowControllerDelegate?.fileWasOpened()
             self.refreshControls()
-        } else {
-            print("Error opening file")
         }
     }
     
@@ -199,21 +187,13 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
             self.editView.tileSelected(withCHR: safeGrid.getCHR(atIndex: safeGrid.selectedCHRIndex))
             self.view.setNeedsDisplay(view.bounds)
             self.refreshControls()
-        } else {
-            print("Error opening file")
         }
     }
     
     @IBAction func exportToNESROMFileMenuItemSelected(sender:NSMenuItem) {
         
         if let safeCHRGrid = self.fullGridCollectionView?.grid {
-            let resultOfExportOperation = exportCHRToNESROMFile(withCHRGrid: safeCHRGrid)
-            
-            if resultOfExportOperation == true {
-                Swift.print("Export Succeeded")
-            } else {
-                Swift.print("Export Failed")
-            }
+            let _ = exportCHRToNESROMFile(withCHRGrid: safeCHRGrid)
         }
     }
     
@@ -242,27 +222,22 @@ class EditorViewController: NSViewController, FileEditProtocol, FileSizeSelectio
     }
     
     @IBAction func undoMenuItemSelected(sender:NSMenuItem) {
-        print("Undo - Menu")
         self.fullGridCollectionView?.undo()
     }
     
     @IBAction func redoMenuItemSelected(sender:NSMenuItem) {
-        print("Redo - Menu")
         self.fullGridCollectionView?.redo()
     }
     
     @IBAction func cutMenuItemSelected(sender:NSMenuItem) {
-        print("Cut - Menu")
         self.fullGridCollectionView?.cutCHR()
     }
     
     @IBAction func copyMenuItemSelected(sender:NSMenuItem) {
-        print("Copy - Menu")
         self.fullGridCollectionView?.copyCHR()
     }
     
     @IBAction func pasteMenuItemSelected(sender:NSMenuItem) {
-        print("Paste - Menu")
         self.fullGridCollectionView?.pasteCHR()
     }
     

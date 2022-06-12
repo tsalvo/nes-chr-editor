@@ -57,7 +57,6 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, scheme: CHRScheme, toURL aURL:URL
         }
         
     } else {
-        Swift.print("File was not saved (User canceled Save)")
         return nil
     }
 }
@@ -89,7 +88,6 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, scheme: CHRScheme, toURL aURL:URL
         }
         
     } else {
-        Swift.print("File was not saved (User canceled Save)")
         return nil
     }
 }
@@ -128,7 +126,6 @@ func saveCHRFile(withCHRGrid aChrGrid:CHRGrid, scheme: CHRScheme) -> URL? {
             return nil
         }
     } else {
-        Swift.print("File was not saved (User canceled Save)")
         return nil
     }
 }
@@ -272,7 +269,6 @@ func exportCHRToNESROMFile(withCHRGrid aChrGrid:CHRGrid) -> Bool {
             let cartridge = Cartridge(fromData: data)
             
             guard cartridge.isValid else {
-                Swift.print("NES ROM: ROM appears to be invalid")
                 return false
             }
             

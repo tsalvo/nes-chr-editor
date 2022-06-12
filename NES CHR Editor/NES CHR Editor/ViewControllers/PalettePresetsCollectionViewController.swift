@@ -31,11 +31,6 @@ class PalettePresetsCollectionViewController: NSViewController, NSCollectionView
         self.paletteSelectionCollectionView.dataSource = self
     }
     
-//    override func viewWillAppear() {
-//        super.viewWillAppear()
-//        self.paletteSelectionCollectionView.reloadData()
-//    }
-    
     override func viewWillLayout() {
         super.viewWillLayout()
         self.paletteSelectionCollectionView.collectionViewLayout?.invalidateLayout()

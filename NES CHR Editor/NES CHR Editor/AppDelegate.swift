@@ -65,7 +65,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func newWindowMenuItemSelected(sender:NSMenuItem) {
-        Swift.print("New - Menu - AppDelegate")
         if let safeEditorWC = NSStoryboard.init(name: "Main", bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
             let safeEditorVC = safeEditorWC.contentViewController as? EditorViewController {
             safeEditorVC.shouldShowFileSizeSelectionDialog = true
@@ -74,8 +73,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func openMenuItemSelected(sender:NSMenuItem) {
-        Swift.print("Open - Menu - AppDelegate")
-        
         if let safeEditorWC = NSStoryboard.init(name: "Main", bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
             let safeEditorVC = safeEditorWC.contentViewController as? EditorViewController {
             safeEditorWC.showWindow(sender)
@@ -84,8 +81,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func importFromNESROMMenuItemSelected(sender:NSMenuItem) {
-        Swift.print("Open - Menu - AppDelegate")
-        
         if let safeEditorWC = NSStoryboard.init(name: "Main", bundle: Bundle.main).instantiateInitialController() as? EditorWindowController,
             let safeEditorVC = safeEditorWC.contentViewController as? EditorViewController {
             safeEditorWC.showWindow(sender)
